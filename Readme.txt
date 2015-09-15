@@ -1,30 +1,21 @@
 TEAM 03 Mobile Development-
-Johnson Ta
 Maryam Bolouribazzaz
+Johnson Ta
 Gill Black
 Steven Lien
 Inderjeet Kaur
 
-www.riverside.webelementz.com
-Database name in Arvixe: riverside_db
-user: riverside_Admin
-pw: riverside
-
-Remote Management
-Server Name: lotus.arvixe.com
-Site name: riverside.webelementz.com
-Username: riversid_entzcom_adm
-Password: riverside
-
 /***********************************************/
-Login to admin:
-User: admin
-Password: 123456
+Passwords for Log in
 
-Login for doctors:
-User: dr.john
-Password: 123456
+Log in as Admin:
+Username: admin
+Password: test1234
 
-Login for patients:
-User: maryam.b
-Password: 123456
+Log in as Doctor:
+Username: dr.john
+Password: test1234
+
+Log in as Patient:
+Username: maryambb
+Password: test1234
