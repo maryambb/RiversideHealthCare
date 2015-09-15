@@ -1,0 +1,74 @@
+﻿@model RiversideHealthCare.Models.JobApplicant
+@{
+    ViewBag.Title = "ApplicantUpdate";
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+}
+
+
+@* Update the information of one applicant *@
+<h2>Update for applicant: "@Html.DisplayFor(x => x.first_name) @Html.DisplayFor(x => x.last_name)" </h2>
+<h4>Date of sending application is @Html.DisplayFor(x => x.date.Date)</h4>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary()
+    @Html.AntiForgeryToken()
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.first_name, new { @class = "label" })
+    </div>
+    <div class="editor-field">
+        @Html.TextBoxFor(model => model.first_name, new { @class = "textbox" })
+        @Html.ValidationMessageFor(model => model.first_name, "*")
+    </div>
+    <div class="editor-label">
+        @Html.LabelFor(model => model.last_name, new { @class = "label" })
+    </div>
+    <div class="editor-field">
+        @Html.TextBoxFor(model => model.last_name, new { @class = "textbox" })
+        @Html.ValidationMessageFor(model => model.last_name, "*")
+    </div>
+    <div class="editor-label">
+        @Html.LabelFor(model => model.email, new { @class = "label" })
+    </div>
+    <div class="editor-field">
+        @Html.TextBoxFor(model => model.email, new { @class = "textbox" })
+        @Html.ValidationMessageFor(model => model.email, "*")
+    </div>
+    <div class="editor-label">
+        @Html.LabelFor(model => model.phone, new { @class = "label" })
+    </div>
+    <div class="editor-field">
+        @Html.TextBoxFor(model => model.phone, new { @class = "textbox" })
+        @Html.ValidationMessageFor(model => model.phone, "*")
+    </div>
+    <div class="editor-label">
+        @Html.LabelFor(model => model.status, new { @class = "label" })
+    </div>
+    <div class="editor-field">
+        @Html.DropDownListFor(model => model.status, new[] {
+                 new SelectListItem() {Text = "Accept"},
+                 new SelectListItem() {Text = "Reject"},
+                 new SelectListItem() {Text = "Pending"}
+             }, "-- Select Status --", new { @class = "dropdown-list" })
+
+    </div>
+    <div class="editor-label">
+        @Html.LabelFor(model => model.description, new { @class = "label" })
+    </div>
+    <div class="editor-field">
+        @Html.TextAreaFor(model => model.description, new { @class = "textarea" })
+        @Html.ValidationMessageFor(model => model.description, "*")
+    </div>
+
+
+    <input type="submit" value="Insert" class="buttonstyle" />
+    <a href='@Url.Action("Applicants", "JobPostAdmin")'> <span class="buttonstyle">Cancel</span> </a>
+
+
+
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,36 @@
+﻿@model IEnumerable<RiversideHealthCare.Models.ERWaitQueue>
+@{
+    ViewBag.Title = "ER Admin";
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+}
+
+@*Displays the wait time*@
+<label class="label"> Current Wait time: </label>
+<p id="slDisplayTime">@ViewBag.currentTime </p>
+<p> @Html.ActionLink("Update Timer", "UpdateTimer", new { id = 1 })</p>
+
+
+<p> @Html.ActionLink("Insert a paitent", "Insert", "ErAdmin")</p>
+
+@*Generates a table from the paitents*@
+<table>
+    <tr>
+        <td>First Name</td>
+        <td>Last Name</td>
+        <td>Condition</td>
+        <td>Delete</td>
+        <td>Update</td>
+
+    </tr>
+
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.fName</td>
+            <td>@x.lName</td>
+            <td> @x.condition</td>
+            <td>@Html.ActionLink("Delete", "Delete", new { id = x.id })</td>
+            <td>@Html.ActionLink("Update", "Update", new { id = x.id })</td>
+        </tr>
+    }
+</table>

@@ -1,0 +1,26 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<RiversideHealthCare.Models.news>
+
+@{
+    ViewBag.Title = "AllNews";
+}
+<div id="all_news">
+    <h1 class="heading">Hospital & Community News</h1>
+
+    <!--ALL NEWS. ADD IN PAGINATION-->
+    <table>
+        @foreach (var x in Model)
+        {
+            <tr class="news_all">
+                <td class="news_image"><img style="width:120px;" src="~/Content/news/@Url.Content(x.news_img)"></td>
+                <td class="news_head">@Html.ActionLink(x.news_name, "DetailIndex", new { id = x.news_id })</td>
+                <td class="news_date">Posted: @x.news_date.ToString("d")</td>
+
+            </tr>
+        <!--EITHER JUST HEADLINE OR ADD IN ABSTRACT-->
+        <!--We putting back buttons? home links?-->
+        }
+    </table>
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+</div>

@@ -1,0 +1,60 @@
+﻿@model RiversideHealthCare.Models.findDoctor
+
+@{
+    ViewBag.Title = "doctorInsert";
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+}
+
+<h2>doctorInsert</h2>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.fname, new { @class = "label" })
+    </div>
+    <div class="editor-field">
+        @Html.TextBoxFor(model => model.fname, new { @class = "textbox" })
+        @Html.ValidationMessageFor(model => model.fname, "*")
+    </div>
+    <div class="editor-label">
+        @Html.LabelFor(model => model.lname, new { @class = "label" })
+    </div>
+    <div class="editor-field">
+        @Html.TextBoxFor(model => model.lname, new { @class = "textbox" })
+        @Html.ValidationMessageFor(model => model.lname, "*")
+    </div>
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.speciality, new { @class = "label" })
+    </div>
+    <div class="editor-field">
+        @Html.TextBoxFor(model => model.speciality, new { @class = "textbox" })
+        @Html.ValidationMessageFor(model => model.speciality, "*")
+    </div>
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.branch_id, new { @class = "label" })
+    </div>
+    <div class="editor-field">
+        @Html.TextBoxFor(model => model.branch_id, new { @class = "textbox" })
+        @Html.ValidationMessageFor(model => model.branch_id, "*")
+    </div>
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.gender, new { @class = "label" })
+    </div>
+    <div class="editor-field">
+        @Html.TextBoxFor(model => model.gender, new { @class = "textbox" })
+        @Html.ValidationMessageFor(model => model.gender, "*")
+    </div>
+
+    <input type="submit" value="Insert" class="buttonstyle" />
+
+    <p>@Html.ActionLink("Back to list", "doctorIndex")</p>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

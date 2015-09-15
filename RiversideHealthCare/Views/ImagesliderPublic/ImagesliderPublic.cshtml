@@ -1,0 +1,23 @@
+﻿@model IEnumerable<RiversideHealthCare.Models.Imageslider>
+
+<ul class="rslides">
+    @foreach (var x in Model)
+    {
+        <li><a href="@x.Link"><img src="@Url.Content("~/Content/images/imageslider/" + x.Image)" title="@x.Name" alt="@x.Name" /></a></li>
+    }
+</ul>
+
+<script>
+    //credit to: http://responsiveslides.com/ for imageslider template
+    $(function () {
+        $(".rslides").responsiveSlides();
+    });
+</script>
+
+
+
+@*Stock images from imageslider source:
+    - sunnybrook.ca
+    - www.hospitalgiftshop.com
+    - Flickr
+*@

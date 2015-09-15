@@ -1,0 +1,45 @@
+﻿@model RiversideHealthCare.Models.location
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+}
+
+<h2>Update</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(x => x.id)
+    @Html.LabelFor(x => x.name, new { @class = "label" })
+    @Html.TextBoxFor(x => x.name, new { @class = "textbox" })
+
+    <br /> <br />
+
+    @Html.LabelFor(x => x.address, new { @class = "label" })
+    @Html.TextBoxFor(x => x.address, new { @class = "textbox" })
+
+    <br /><br />
+
+    @Html.LabelFor(x => x.postalCode, new { @class = "label" })
+    @Html.TextBoxFor(x => x.postalCode, new { @class = "textbox" })
+
+    <br /><br />
+
+    @Html.LabelFor(x => x.country, new { @class = "label" })
+    @Html.TextBoxFor(x => x.country, new { @class = "textbox" })
+
+    <br /><br />
+
+    @Html.LabelFor(x => x.phone, new { @class = "label" })
+    @Html.TextBoxFor(x => x.phone, new { @class = "textbox" })
+
+    <br /><br />
+
+    <input type="submit" value="Update" class="buttonstyle"/>
+}
+<p>
+    @Html.ActionLink("Back", "Details", new { id = Model.id })
+</p>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

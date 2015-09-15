@@ -1,0 +1,15 @@
+﻿@model RiversideHealthCare.Models.faq
+@{
+    ViewBag.Title = "details";
+}
+@*Shows both the question and answer*@
+<div id="index-wrap">
+    <div class="content-wrapper">
+        <h2 class="sltitle">Frequently Asked Questions</h2>
+        <div id="faqDiv">
+            <h3> @Html.DisplayFor(x => x.question)</h3>
+            <p id="answer"> @Html.DisplayFor(x => x.answer)</p>
+        </div>
+
+    </div>
+</div>

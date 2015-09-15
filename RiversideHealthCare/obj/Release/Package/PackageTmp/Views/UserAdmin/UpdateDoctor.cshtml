@@ -1,0 +1,116 @@
+﻿@model RiversideHealthCare.Models.UpdateDoctorModel
+@{
+    ViewBag.Title = "UpdateDoctor";
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+
+    List<SelectListItem> listItems = new List<SelectListItem>();
+    foreach (var item in ViewBag.DepartmentList)
+    {
+        if (item == @Model.department_name)
+        {
+            listItems.Add(new SelectListItem
+            {
+                Text = item,
+                Value = item,
+                Selected = true
+            });
+        }
+        else
+        {
+            listItems.Add(new SelectListItem
+            {
+                Text = item,
+                Value = item
+            });
+        }
+    }
+}
+
+<h2>Update Doctor</h2>
+@* This form is for updating selected doctor *@
+<div id="log_form">
+   @using (Html.BeginForm("UpdateDoctor", "UserAdmin", null, FormMethod.Post,
+                              new { enctype = "multipart/form-data" }))
+   {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary()
+
+
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.first_name, new { @class = "label" })
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.first_name, new { @class = "textbox" })
+            @Html.ValidationMessageFor(model => model.first_name, "*")
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.last_name, new { @class = "label" })
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.last_name, new { @class = "textbox" })
+            @Html.ValidationMessageFor(model => model.last_name, "*")
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.department_name, new { @class = "label" })
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.department_name, listItems, new { @class = "dropdown-list" })
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.email, new { @class = "label" })
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.email, new { @class = "textbox" })
+            @Html.ValidationMessageFor(model => model.email, "*")
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.phone, new { @class = "label" })
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.phone, new { @class = "textbox" })
+            @Html.ValidationMessageFor(model => model.phone, "*")
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.specialty)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.specialty, new[] {
+                                                        new SelectListItem(){Text = "Radiologist"},
+                                                        new SelectListItem(){Text = "Pathologists"},
+                                                        new SelectListItem(){Text = "Surgeons"},
+                                                        new SelectListItem(){Text = "Toxicolodists"},
+                                                        new SelectListItem(){Text = "Urologists"},
+                                                        new SelectListItem(){Text = "Diabetologists"},
+                                                        new SelectListItem(){Text = "Cardiologists"},
+                                                        new SelectListItem(){Text = "Oncologists"},
+                                                        new SelectListItem(){Text = "Gynaecologists"},
+                                                        new SelectListItem(){Text = "Otolaryngologists"}
+                                                        }, new { @class = "dropdown-list" })
+
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.bio, new { @class = "label" })
+        </div>
+        <div class="editor-field">
+            @Html.TextAreaFor(model => model.bio, new { @class = "textbox" })
+            @Html.ValidationMessageFor(model => model.bio, "*")
+        </div>
+        <div class="editor-label">
+            <label class="label">Upload new photo</label>
+        </div>
+        <div class="editor-label">
+            <input type="file" name="image" id="photo_path" />
+        </div>
+
+    <input type="submit" value="Update" class="buttonstyle" />
+    <input type="button" value="Cancel" class="buttonstyle" onclick="javascript:document.location.href='@Url.Action("ListDoctor", "UserAdmin", new RouteValueDictionary(new { id = ViewBag.doctorId}))'" />
+    
+    }
+</div>
+@*Empty divs to clear floats*@
+<div class="clear"></div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

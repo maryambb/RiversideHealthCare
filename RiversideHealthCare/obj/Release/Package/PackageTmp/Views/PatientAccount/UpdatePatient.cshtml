@@ -1,0 +1,145 @@
+﻿@model RiversideHealthCare.Models.UpdatePatientModel
+
+@{
+    ViewBag.Title = "Update Patient";
+    @Styles.Render("~/Content/SideBar.css")
+}
+
+
+
+<div>
+    @*Side menu bar*@
+    <div class="left-menu">
+        <div id="cms-left-nav">
+            <a href='@Url.Action("PatientProfile", "PatientAccount")' class="left-mnu-itm">
+                Profile
+            </a>
+            <a href='@Url.Action("UpdatePatient", "PatientAccount")' class="left-mnu-itm">
+                Edit Profile
+            </a>
+            <a href='@Url.Action("Manage", "Account")' class="left-mnu-itm">
+                Change password
+            </a>
+        </div>@* -- end of cms-left-mnu  *@
+    </div>@* -- end of left-nav -- *@
+    <div style="float:left; margin:3px 30px;">
+        <h2>Update Patient</h2>
+        <div id="log_form">
+            @* Updating the information by patient itself *@
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary()
+
+
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.health_card, new { @class = "label"})
+                </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(model => model.health_card, new { @class = "textbox" })
+                    @Html.ValidationMessageFor(model => model.health_card, "*")
+                </div>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.first_name, new { @class = "label" })
+                </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(model => model.first_name, new { @class = "textbox" })
+                    @Html.ValidationMessageFor(model => model.first_name, "*")
+                </div>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.last_name, new { @class = "label" })
+                </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(model => model.last_name, new { @class = "textbox" })
+                    @Html.ValidationMessageFor(model => model.last_name, "*")
+                </div>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.birth_date, new { @class = "label" })
+                </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(model => model.birth_date, new { @type = "date", @Value = Model.birth_date.ToString("yyyy-MM-dd"), @class = "textbox" })
+                    @Html.ValidationMessageFor(model => model.birth_date, "*")
+                </div>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.gender, new { @class = "label" })
+                </div>
+                <div class="editor-field">
+                    @Html.DropDownListFor(model => model.gender, new[] {
+                         new SelectListItem() {Text = "Female"},
+                         new SelectListItem() {Text = "Male"}
+                     }, "-- Select Gender --", new { @class = "dropdown-list" })
+
+                </div>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.email, new { @class = "label" })
+                </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(model => model.email, new { @class = "textbox" })
+                    @Html.ValidationMessageFor(model => model.email, "*")
+                </div>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.phone, new { @class = "label" })
+                </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(model => model.phone, new { @class = "textbox" })
+                    @Html.ValidationMessageFor(model => model.phone, "*")
+                </div>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.address, new { @class = "label" })
+                </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(model => model.address, new { @class = "textbox" })
+                    @Html.ValidationMessageFor(model => model.address, "*")
+                </div>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.city, new { @class = "label" })
+                </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(model => model.city, new { @class = "textbox" })
+                    @Html.ValidationMessageFor(model => model.city, "*")
+                </div>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.province, new { @class = "label" })
+                </div>
+                <div class="editor-field">
+                    @Html.DropDownListFor(model => model.province, new[] {
+                                                new SelectListItem(){Text = "Alberta", Value="AB"},
+                                                new SelectListItem(){Text = "British Columbia", Value="BC"},
+                                                new SelectListItem(){Text = "Manitoba", Value="MA"},
+                                                new SelectListItem(){Text = "New Brunswick", Value="NB"},
+                                                new SelectListItem(){Text = "Newfoundland", Value="NF"},
+                                                new SelectListItem(){Text = "Nova Scotia", Value="NS"},
+                                                new SelectListItem(){Text = "Ontario", Value="ON"},
+                                                new SelectListItem(){Text = "PEI", Value="PE"},
+                                                new SelectListItem(){Text = "Quebec", Value="QC"},
+                                                new SelectListItem(){Text = "Saskatchewan", Value="SK"}
+                                                }, "-- Select Province --", new { @class = "dropdown-list" })
+
+                </div>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.postal_code, new { @class = "label" })
+                </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(model => model.postal_code, new { @class = "textbox" })
+                    @Html.ValidationMessageFor(model => model.postal_code, "*")
+                </div>
+
+                <div >
+                    <input type="button" class="buttonstyle" value="Cancel" onclick="javascript:document.location.href='@Url.Action("PatientProfile", "PatientAccount")'" />
+                    <input type="submit" class="buttonstyle" value="Update" />
+                </div>
+
+
+            }
+        </div>
+
+    </div>
+    <div style="clear:both"></div>
+</div>
+
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

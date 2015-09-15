@@ -1,0 +1,70 @@
+﻿@model RiversideHealthCare.Models.feedback
+
+@{
+    ViewBag.Title = "Feedback";
+}
+
+<div id="index-wrap">
+
+    <!--DIFFERENT FONT FOR TEXTAREAFOR -- CHANGE THIS-->
+    <h1>Feedback</h1>
+    <p>We'd love to hear about your experience at Riverside Hospital!</p>
+
+    <div id="feedback_form">
+        @using (Html.BeginForm("_FeedbackPublicForm", "FeedbackPublic", FormMethod.Post))
+        {
+            //PROTECT AGAINST CSRF
+            @Html.AntiForgeryToken()
+            //DISPLAY VALIDATION ERRORS
+            @Html.ValidationSummary()
+            <div>
+                @Html.LabelFor(model => model.fb_fname, "First Name: ")
+            </div>
+            <div>
+                @Html.TextBoxFor(model => model.fb_fname)
+                @Html.ValidationMessageFor(model => model.fb_fname, "*")
+            </div>
+            <div>
+                @Html.LabelFor(model => model.fb_lname, "Last Name: ")
+            </div>
+            <div>
+                @Html.TextBoxFor(model => model.fb_lname)
+                @Html.ValidationMessageFor(model => model.fb_lname, "*")
+            </div>
+            <div>
+                @Html.LabelFor(model => model.fb_email, "Email: ")
+            </div>
+            <div>
+                @Html.TextBoxFor(model => model.fb_email)
+                @Html.ValidationMessageFor(model => model.fb_email, "*")
+            </div>
+            <div>
+                @Html.LabelFor(model => model.fb_comment, "Comments: ")
+            </div>
+            <div>
+                @Html.TextAreaFor(model => model.fb_comment)
+                @Html.ValidationMessageFor(model => model.fb_comment, "*")
+            </div>
+
+            <input type="submit" value="Submit" />
+        }
+    </div><!--End feedback form-->
+
+</div>
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+
+    @**@
+    @if (ViewBag.Message != null)
+    {
+        <script>
+
+            $(document).ready(function () {
+
+                alert('@ViewBag.Message');
+                window.location = "/Home/Index";
+            });
+
+        </script>
+    }

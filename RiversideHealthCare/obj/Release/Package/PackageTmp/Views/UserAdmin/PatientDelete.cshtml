@@ -1,0 +1,28 @@
+﻿@model RiversideHealthCare.Models.patient
+@{
+    ViewBag.Title = "PatientDelete";
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+}
+
+<h2>
+    Deleting a Patient!
+</h2>
+<h4>Are you sure you want to delete <em>@Model.first_name @Model.last_name?</em></h4>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div>
+        @Html.TextBoxFor(model => model.user_name, new { style = "display: none;" })
+        <input type="submit" value="Delete" class="buttonstyle" />
+        <a href='@Url.Action("ListPatient", "UserAdmin")'> <span class="buttonstyle">Back to list</span> </a>
+
+    </div>
+}
+
+
+
+
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

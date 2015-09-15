@@ -1,0 +1,46 @@
+﻿@model RiversideHealthCare.Models.news
+
+@{
+    ViewBag.Title = "News Admin Index";
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+}
+
+<h1>Insert News</h1>
+
+@using (Html.BeginForm("InsertNews", "News", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+    <div>
+        <!--DISPLAY NAME NOT WORKING HERE-->
+        @Html.LabelFor(model => model.news_img, "Image:", new { @class = "label" })
+        <input type="file" name="file" />
+    </div>
+    <div>
+        @Html.LabelFor(model => model.news_name, "Headline:", new { @class = "label" })
+    </div>
+    <div>
+        @Html.TextBoxFor(model => model.news_name, new { @class = "textbox" })
+        @Html.ValidationMessageFor(model => model.news_name)
+    </div>
+    <div>
+        @Html.LabelFor(model => model.news_desc, "Description:", new { @class = "label" })
+    </div>
+    <div>
+        @Html.TextAreaFor(model => model.news_desc, new { @class = "textarea_lg" })
+        @Html.ValidationMessageFor(model => model.news_desc)
+    </div>
+    <div>
+        @Html.LabelFor(model => model.news_date, new { @class = "label" })
+    </div>
+    <div>
+        @Html.TextBoxFor(x => x.news_date, new { @Value = @DateTime.Now.ToShortDateString() })
+    </div>
+    <input type="submit" name="Insert" value="Add" class="buttonstyle" />
+    <a href='@Url.Action("NewsAdminIndex", "News")' class="buttonstyle">Back</a>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

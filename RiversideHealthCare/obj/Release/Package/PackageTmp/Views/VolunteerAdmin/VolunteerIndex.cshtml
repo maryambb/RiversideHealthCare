@@ -1,0 +1,49 @@
+﻿@model IEnumerable<RiversideHealthCare.Models.volunteer>
+
+@{
+    ViewBag.Title = "VolunteerIndex";
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+}
+<div>
+    <div style="float:left">
+        <h2>Volunteer Page</h2>
+    </div>
+    <div style="float:right; padding-top:40px; padding-right:30px;">
+        <a href='@Url.Action("VolunteerInsert")' class="buttonstyle">Insert Information</a>
+    </div>
+    <div style="clear:both"></div>
+</div>
+
+
+<table>
+    <thead>
+        <tr>
+            <th>Volunteer Position</th>
+            <th>Location</th>
+            <th>Volunteer Requirements</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td>@x.position</td>
+                <td>@x.location</td>
+                <td>@x.requirement</td>
+                <td>
+                    @Html.ActionLink("View", "VolunteerDetails", new { id = x.Id })/
+                    @Html.ActionLink("Edit", "VolunteerUpdate", new { id = x.Id }) /
+                    @Html.ActionLink("Delete", "VolunteerDelete", new { id = x.Id })/
+                    @Html.ActionLink("Apply", "passId", new { id = x.Id })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

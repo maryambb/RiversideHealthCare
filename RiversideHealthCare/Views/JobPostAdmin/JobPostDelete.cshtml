@@ -1,0 +1,25 @@
+﻿@model RiversideHealthCare.Models.JobPost
+@{
+    ViewBag.Title = "JobPostDelete";
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+}
+
+<h2>
+    Deleting a job post!
+</h2>
+<h4>Are you sure you want to delete "<em>@Model.title" job?</em></h4>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div>
+        <input type="submit" value="Delete" class="buttonstyle" />
+        <a href='@Url.Action("Index", "JobPostAdmin")'> <span class="buttonstyle">Back to list</span> </a>
+    </div>
+}
+
+
+
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

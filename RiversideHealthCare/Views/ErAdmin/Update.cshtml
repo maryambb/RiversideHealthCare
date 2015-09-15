@@ -1,0 +1,33 @@
+﻿@model RiversideHealthCare.Models.ERWaitQueue
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+}
+
+@*Updates a paitents record*@
+<h2>Update</h2>
+
+@using (Html.BeginForm())
+{
+    <label class="label"> First Name: </label>
+    @Html.TextBoxFor(x => x.fName, new { @class = "textbox" })
+
+    <br /> <br />
+    <label class="label"> Last Name: </label>
+    @Html.TextBoxFor(x => x.lName, new { @class = "textbox" })
+
+    <br /> <br />
+    <label class="label"> Condition: </label>
+    @Html.TextBoxFor(x => x.condition, new { @class = "textbox" })
+
+    <br /><br />
+
+    <input type="submit" value="Update" class="buttonstyle" />
+}
+<p>
+    @Html.ActionLink("Back", "Details", new { id = Model.id })
+</p>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

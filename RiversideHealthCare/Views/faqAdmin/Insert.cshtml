@@ -1,0 +1,28 @@
+﻿@model RiversideHealthCare.Models.faq
+@{
+    ViewBag.Title = "Insert";
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+}
+
+@*Paitent fills out the form to be inserted into the db, validates the user inputs  *@
+<h2>Insert</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary()
+    @Html.LabelFor(model => model.question, new { @class = "label" });
+    @Html.TextAreaFor(model => model.question, new { @class = "textarea" });
+
+    <br />
+
+    @Html.LabelFor(model => model.answer, new { @class = "label" });
+    @Html.TextAreaFor(model => model.answer, new { @class = "textarea" });
+
+    <br /><br />
+    <input type="submit" value="Insert" class="buttonstyle" />
+}
+<p> @Html.ActionLink("Back", "Index")</p>
+
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+}

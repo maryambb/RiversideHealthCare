@@ -1,0 +1,15 @@
+﻿@model RiversideHealthCare.Models.events
+
+<div class="container">
+    <div id="event_detail">
+        <div id="event">
+            <h1 class="heading">@Html.DisplayFor(x => x.ev_title)</h1>
+            <p>Event Date: @Html.DisplayFor(x => x.ev_date)</p>
+            <p>Location: @Html.DisplayFor(x => x.ev_location)</p>
+            <p>@Html.DisplayFor(x => x.ev_desc)</p>
+        </div>
+        <a href="@Url.Action("Index", "Home")" class="buttonstyle">Home</a>
+        <a href="@Url.Action("AllEvents", "EventsPublic")" class="buttonstyle">All Events</a>
+    </div>
+</div>
+

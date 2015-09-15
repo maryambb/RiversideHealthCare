@@ -1,0 +1,30 @@
+﻿@model RiversideHealthCare.Models.volunteer
+
+@{
+    ViewBag.Title = "VolunteerDelete";
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+}
+
+<h2>VolunteerDelete</h2>
+<h2>
+    Are you sure you want to delete <em>@Model.position?</em>
+</h2>
+
+@using (Html.BeginForm())
+{
+    <div>
+        <input type="submit" value="Delete" />
+
+    </div>
+}
+
+<div class="back">
+    @Html.ActionLink("Back to List", "VolunteerIndex")
+</div>
+
+
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+

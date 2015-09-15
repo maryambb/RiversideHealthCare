@@ -1,0 +1,104 @@
+﻿@model RiversideHealthCare.Models.Order
+
+@{
+    ViewBag.Title = "Gift Shop";
+        var amount = ViewBag.amount;
+        
+        
+}
+
+<div id="index-wrap">
+
+    <h2>Purchase Form</h2>
+
+
+    @*imageslider feature view*@
+    <div id="frm">
+        @* This form is consist of information for inserting new donor along with connecting to Paypal *@
+        @using (Html.BeginForm())
+        {
+            @Html.ValidationSummary()
+
+            @Html.HiddenFor(model => model.P_Id, new { @Value = ViewBag.P_Id })
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.firstName, new { @class = "label" })
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.firstName, new { @class = "textbox" })
+                @Html.ValidationMessageFor(model => model.firstName, "*")
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.lastName, new { @class = "label" })
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.lastName, new { @class = "textbox" })
+                @Html.ValidationMessageFor(model => model.lastName, "*")
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.street, new { @class = "label" })
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.street, new { @class = "textbox" })
+                @Html.ValidationMessageFor(model => model.street, "*")
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.country, new { @class = "label" })
+            </div>
+            <div class="editor-field">
+                @Html.DropDownListFor(model => model.country, new[] {
+                 new SelectListItem() {Text = "Canada"},
+                 new SelectListItem() {Text = "Cuba"},
+                 new SelectListItem() {Text = "Dubai"},
+                 new SelectListItem() {Text = "Germany"},
+                 new SelectListItem() {Text = "Iran"},
+                 new SelectListItem() {Text = "India"},
+                 new SelectListItem() {Text = "United State"}
+             }, "-- Select Country --", new { @class = "dropdown-list" })
+
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.city, new { @class = "label" })
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.city, new { @class = "textbox" })
+                @Html.ValidationMessageFor(model => model.city, "*")
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.postal, new { @class = "label" })
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.postal, new { @class = "textbox" })
+                @Html.ValidationMessageFor(model => model.postal, "*")
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.email, new { @class = "label" })
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.email, new { @class = "textbox" })
+                @Html.ValidationMessageFor(model => model.email, "*")
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.date, new { Value = DateTime.Now.ToString(), style = "display: none;" })
+            </div>
+            <div>
+
+                <!--This part is for connecting to paypal-->
+
+                <form action="~/Home/PurchaseForm" method="post">
+                    <input type="hidden" name="amount" id="amount" value="@amount" />
+                    <input type="hidden" name="cmd" value="_products">
+                    <input type="hidden" name="business" value="info@riverside.webelementz.com">
+                    <input type="hidden" name="item_name" value="Buy this product">
+                    <input type="hidden" name="currency_code" value="CAD">
+                    <!--<input type="hidden" name="amount" >-->
+                    <input type="submit" value="Proceed with Paypal" class="buttonstyle" />
+                </form>
+            </div>
+
+        }
+    </div>
+    </div>
+    @section scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }

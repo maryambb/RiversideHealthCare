@@ -1,0 +1,66 @@
+﻿@model RiversideHealthCare.Models.contact_list
+
+@{
+    ViewBag.Title = "ContactInsert";
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+}
+
+<h2>ContactInsert</h2>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary()
+    <div class="editor-label">
+        @Html.LabelFor(model => model.department, new { @class = "label" })
+    </div>
+    <div class="editor-field">
+        @Html.TextBoxFor(model => model.department, new { @class = "textbox" })
+        @Html.ValidationMessageFor(model => model.department, "*")
+    </div>
+    <div class="editor-label">
+        @Html.LabelFor(model => model.detail, new { @class = "label" })
+    </div>
+    <div class="editor-field">
+        @Html.TextBoxFor(model => model.detail, new { @class = "textbox" })
+        @Html.ValidationMessageFor(model => model.detail, "*")
+    </div>
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.location, new { @class = "label" })
+    </div>
+    <div class="editor-field">
+        @Html.TextBoxFor(model => model.location, new { @class = "textbox" })
+        @Html.ValidationMessageFor(model => model.location, "*")
+    </div>
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.phone, new { @class = "label" })
+    </div>
+    <div class="editor-field">
+        @Html.TextBoxFor(model => model.phone, new { @class = "textbox" })
+        @Html.ValidationMessageFor(model => model.phone, "*")
+    </div>
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.fax, new { @class = "label" })
+    </div>
+    <div class="editor-field">
+        @Html.TextBoxFor(model => model.fax, new { @class = "textbox" })
+        @Html.ValidationMessageFor(model => model.fax, "*")
+    </div>
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.head, new { @class = "label" })
+    </div>
+    <div class="editor-field">
+        @Html.TextBoxFor(model => model.head, new { @class = "textbox" })
+        @Html.ValidationMessageFor(model => model.head, "*")
+    </div>
+
+    <input type="submit" value="Insert" class="buttonstyle" />
+
+    <p>@Html.ActionLink("Back to list", "ContactIndex")</p>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

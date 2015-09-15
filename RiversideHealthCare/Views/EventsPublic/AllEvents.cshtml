@@ -1,0 +1,33 @@
+﻿@model IEnumerable<RiversideHealthCare.Models.events>
+
+@{
+    ViewBag.Title = "AllNews";
+}
+@*Need to align h1*@
+
+<div id="index-wrap">
+    <div class="container">
+        <h1 class="heading">Upcoming Events</h1>
+        <!--ALL NEWS. ADD IN PAGINATION-->
+        <table id="all_events">
+            <thead>
+                <tr>
+                    <th>Event Date</th>
+                    <th>Name</th>
+                    <th>Location</th>
+                </tr>
+            </thead>
+            @foreach (var x in Model)
+            {
+                <tbody>
+                    <tr class="event">
+                        <td>@x.ev_date.ToString("d")</td>
+                        <td>@Html.ActionLink(x.ev_title, "EventDetail", new { id = x.ev_id })</td>
+                        <td>@x.ev_location</td>
+
+                    </tr>
+                </tbody>
+            }
+        </table>
+    </div>
+</div>

@@ -1,0 +1,14 @@
+﻿@model IEnumerable<RiversideHealthCare.Models.location>
+@{
+    ViewBag.Title = "Location Admin";
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+}
+
+<h2>Location Admin</h2>
+<p> @Html.ActionLink("Insert a new location", "Insert", "LocationAdmin")</p>
+<ul>
+    @foreach (var x in Model)
+    {
+        <li>@Html.ActionLink(x.name, "Details", new { id = x.id }) </li>
+    }
+</ul>

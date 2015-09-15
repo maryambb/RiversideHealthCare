@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="riversideConnectionString-Web.config Connection String" description="riversideConnectionString Connection String used in web.config by the application to access the database." defaultValue="Data Source=lotus.arvixe.com;Initial Catalog=riverside_db;User ID=riverside_Admin;Password=riverside" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\MaryamB\\Desktop\\RiversideHealthCare\\RiversideHealthCare\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='riversideConnectionString']/@connectionString" />
+  </parameter>
+</parameters>

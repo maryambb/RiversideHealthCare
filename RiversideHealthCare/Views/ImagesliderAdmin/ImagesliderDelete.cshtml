@@ -1,0 +1,16 @@
+﻿@model RiversideHealthCare.Models.Imageslider
+
+@{
+    ViewBag.Title = "Delete Image :: Riverside Health Care";
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+}
+
+<h2>Delete @Model.Name?</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+            @*Confirm delete*@
+            <input type="submit" value="Delete?" onclick="return confirm('Are you sure you want to delete this item?');" class="buttonstyle" />
+            @Html.ActionLink("Back to list", "ImagesliderIndex", new { ImageId = Model.ImageId }, new { @class = "buttonstyle" })
+    }

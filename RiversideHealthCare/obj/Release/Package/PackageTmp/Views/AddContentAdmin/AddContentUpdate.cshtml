@@ -1,0 +1,69 @@
+﻿@model RiversideHealthCare.Models.Navigation
+
+@{
+    ViewBag.Title = "Update Page :: Riverside Health Care";
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+}
+
+
+@using (Html.BeginForm("AddContentUpdate", "AddContentAdmin", null, FormMethod.Post,
+                              new { enctype = "multipart/form-data" }))
+{
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        @*Passing hidden Id here for corresponding selection*@
+
+            @Html.HiddenFor(x => x.id)
+    <div class="editor-label">
+        @Html.LabelFor(x => x.title, new { @class = "label" })
+    </div>
+    <div class="editor-field">
+        @Html.TextBoxFor(x => x.title, new { @class = "textbox" })
+        @Html.ValidationMessageFor(x => x.title, "*")
+    </div>
+    <div class="editor-label">
+        @Html.LabelFor(x => x.subtitle, new { @class = "label" })
+    </div>
+    <div class="editor-field">
+        @Html.TextBoxFor(x => x.subtitle, new { @class = "textbox" })
+        @Html.ValidationMessageFor(x => x.subtitle, "*")
+    </div>
+    <div class="editor-label">
+        @Html.LabelFor(x => x.intro, new { @class = "label" })
+    </div>
+    <div class="editor-field">
+        @Html.TextAreaFor(x => x.intro, new { @class = "textarea" })
+        @Html.ValidationMessageFor(x => x.intro, "*")
+    </div>
+    <div class="editor-label">
+        @Html.LabelFor(x => x.description, new { @class = "label" })
+    </div>
+    <div class="editor-field">
+        @Html.TextAreaFor(x => x.description, new { @class = "textarea" })
+    </div>
+    <div class="editor-label">
+        @Html.LabelFor(x => x.content_text, new { @class = "label" })
+    </div>
+    <div class="editor-field">
+        @Html.TextAreaFor(x => x.content_text, new { @class = "textarea" })
+    </div>
+    <div class="editor-label">
+        @Html.LabelFor(model => model.content_image)
+    </div>
+    <div class="editor-field">
+        <input type="file" name="file" id="ImagePath" class="buttonstyle" />
+    </div>
+
+        <input type="submit" value="Update" class="buttonstyle" />
+        @Html.ActionLink("Back to list", "AddContentIndex", new { @class = "buttonstyle" })
+        }
+
+
+        @section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+        }
+
+
+<script>
+    CKEDITOR.replace('content_text');
+</script>

@@ -1,0 +1,144 @@
+﻿@model RiversideHealthCare.Models.CreateDoctorModel
+@{
+    ViewBag.Title = "Add New Doctor";
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+
+
+    //Create a list of departments
+    List<SelectListItem> listItems = new List<SelectListItem>();
+    listItems.Add(new SelectListItem
+    {
+        Text = "Selete Department",
+        Value = "",
+        Selected = true
+    });
+    foreach (var item in ViewBag.DepartmentList)
+    {
+        listItems.Add(new SelectListItem
+        {
+            Text = item,
+            Value = item
+        });
+    }
+}
+
+<h2>Add New Doctor</h2>
+
+@*This form is for adding new doctor with admin*@
+<div id="log_form">
+    @using (Html.BeginForm("CreateDoctor", "UserAdmin", null, FormMethod.Post,
+                              new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary()
+
+        //Username
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UserName, new { @class = "label" })
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.UserName, new { @class = "textbox" })
+            @Html.ValidationMessageFor(model => model.UserName, "*")
+        </div>
+        //Password
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Password, new { @class = "label" })
+        </div>
+        <div class="editor-field">
+            @Html.PasswordFor(model => model.Password, new { @class = "textbox" })
+            @Html.ValidationMessageFor(model => model.Password, "*")
+        </div>
+        //Confirm password
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ConfirmPassword, new { @class = "label" })
+        </div>
+        <div class="editor-field">
+            @Html.PasswordFor(model => model.ConfirmPassword, new { @class = "textbox" })
+            @Html.ValidationMessageFor(model => model.ConfirmPassword, "*")
+        </div>
+        //First name
+        <div class="editor-label">
+            @Html.LabelFor(model => model.first_name, new { @class = "label" })
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.first_name, new { @class = "textbox" })
+            @Html.ValidationMessageFor(model => model.first_name, "*")
+        </div>
+        //Last name
+        <div class="editor-label">
+            @Html.LabelFor(model => model.last_name, new { @class = "label" })
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.last_name, new { @class = "textbox" })
+            @Html.ValidationMessageFor(model => model.last_name, "*")
+        </div>
+        //Department 
+        <div class="editor-label">
+            @Html.LabelFor(model => model.department_name, new { @class = "label" })
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.department_name, listItems, new { @class = "dropdown-list" })
+        </div>
+        //Email address
+        <div class="editor-label">
+            @Html.LabelFor(model => model.email, new { @class = "label" })
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.email, new { @class = "textbox" })
+            @Html.ValidationMessageFor(model => model.email, "*")
+        </div>
+        //Phone
+        <div class="editor-label">
+            @Html.LabelFor(model => model.phone, new { @class = "label" })
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.phone, new { @class = "textbox" })
+            @Html.ValidationMessageFor(model => model.phone, "*")
+        </div>
+        //Specialty
+        <div class="editor-label">
+            @Html.LabelFor(model => model.specialty, new { @class = "label" })
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.specialty, new[] {
+                                                    new SelectListItem(){Text = "Radiologists‎"},
+                                                    new SelectListItem(){Text = "Pathologists"},
+                                                    new SelectListItem(){Text = "Surgeons‎"},
+                                                    new SelectListItem(){Text = "Toxicologists‎"},
+                                                    new SelectListItem(){Text = "Urologists"},
+                                                    new SelectListItem(){Text = "Diabetologists"},
+                                                    new SelectListItem(){Text = "Cardiologists"},
+                                                    new SelectListItem(){Text = "Gynaecologists"},
+                                                    new SelectListItem(){Text = "Oncologists"},
+                                                    new SelectListItem(){Text = "Otolaryngologists‎"}
+                                                    }, "-- Select Specialty --", new { @class = "dropdown-list" })
+
+        </div>
+        //Biography
+        <div class="editor-label">
+            @Html.LabelFor(model => model.bio, new { @class = "label" })
+        </div>
+        <div class="editor-field">
+            @Html.TextAreaFor(model => model.bio, new { @class = "textbox" })
+            @Html.ValidationMessageFor(model => model.bio, "*")
+        </div>
+        //This part is for uploading photo
+        <div class="editor-label">
+            <label class="label">Upload photo</label>
+        </div>
+        <div class="editor-label">
+            <input type="file" name="image" id="photo_path" />
+        </div>
+
+        <input type="submit" value="Add" class="buttonstyle" />
+        <input type="button" value="Cancel" class="buttonstyle" onclick="javascript:document.location.href='@Url.Action("ListDoctor", "UserAdmin")'" />
+        
+        
+    }
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+

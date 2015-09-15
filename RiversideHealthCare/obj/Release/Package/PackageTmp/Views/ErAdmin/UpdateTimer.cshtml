@@ -1,0 +1,25 @@
+﻿@model RiversideHealthCare.Models.ERCurrentTime
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+}
+
+@*Updates the current wait time*@
+<h2>Update</h2>
+
+@using (Html.BeginForm())
+{
+    <label class="label"> Wait Time: </label>
+    @Html.TextBoxFor(x => x.waitTime, new { @class = "textbox" })
+
+    <br /><br />
+
+    <input type="submit" value="Update" class="buttonstyle" />
+}
+<p>
+    @Html.ActionLink("Back", "Index", new { id = Model.id })
+</p>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,36 @@
+﻿@model IEnumerable<RiversideHealthCare.Models.findDoctor>
+
+@{
+    ViewBag.Title = "DoctorFound";
+    
+    int i = 0;
+}
+<div class="container">
+    <h2>Doctor Information</h2>
+
+
+
+    @foreach (var x in Model)
+    {
+
+
+        <label>Speciality</label> @x.speciality<br /><br />
+        <label>First Name</label> @x.fname <br /><br />
+        <label>Last Name</label>@x.lname  <br /><br />
+        <label>Gender</label>@x.gender<br /><br />
+        <label>Location</label> @x.branch_id <br /><br />
+
+        i = 1;
+    }
+
+    @if (i == 0)
+    {
+        <p>There is no doctor available in this category.</p>
+
+    }
+    </div>
+
+
+    @section scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }

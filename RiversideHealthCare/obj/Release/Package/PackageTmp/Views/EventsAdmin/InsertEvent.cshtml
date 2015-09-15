@@ -1,0 +1,66 @@
+﻿@model RiversideHealthCare.Models.events
+
+@{
+    ViewBag.Title = "News Admin Index";
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+}
+<!--SCRIPTS NECESSARY FOR DATEPICKER-->
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryui")
+}
+<head>
+    <!--STYLING FOR DATE PICKER-->
+    <title></title>
+    <link href="~/Content/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+</head>
+
+
+<h1>Insert Event</h1>
+
+@using (Html.BeginForm("InsertEvent", "EventsAdmin", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div>
+        @Html.LabelFor(model => model.ev_title, "Event name:", new { @class = "label" })
+    </div>
+    <div>
+        @Html.TextBoxFor(model => model.ev_title, new { @class = "textbox" })
+        @Html.ValidationMessageFor(model => model.ev_title)
+    </div>
+    <div>
+        @Html.LabelFor(model => model.ev_date, "Date: ", new { @class = "label" })
+    </div>
+    <div>
+        @Html.TextBoxFor(model => model.ev_date, new { @id = "date_pick", @class = "textbox" })
+        @Html.ValidationMessageFor(model => model.ev_date)
+    </div>
+    <div>
+        @Html.LabelFor(model => model.ev_location, "Location:", new { @class = "label" })
+    </div>
+    <div>
+        @Html.TextBoxFor(model => model.ev_location, new { @class = "textbox" })
+        @Html.ValidationMessageFor(model => model.ev_location)
+    </div>
+    <div>
+        @Html.LabelFor(model => model.ev_desc, "Description:", new { @class = "label" })
+    </div>
+    <div>
+        @Html.TextAreaFor(model => model.ev_desc, new { @class = "textarea_lg" })
+        @Html.ValidationMessageFor(model => model.ev_desc)
+    </div>
+    @*INSERT & BACK BUTTONS*@
+    <input type="submit" name="Insert" value="Add" class="buttonstyle" />
+    <a href='@Url.Action("EventsAdminIndex", "EventsAdmin")' class="buttonstyle">Back</a>
+}
+
+<!--DATE PICKER ON #DATE_PICK TEXTBOX-->
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $('#date_pick').datepicker({ dateFormat: 'yy-mm-dd' });
+    });
+
+</script>

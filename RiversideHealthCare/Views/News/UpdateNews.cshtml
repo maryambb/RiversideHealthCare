@@ -1,0 +1,35 @@
+﻿@model RiversideHealthCare.Models.news
+
+@{
+    ViewBag.Title = "News Admin Index";
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+}
+
+<h2>Update: @Model.news_name</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(x => x.news_id)
+    <div>
+        <img style="width:120px;" src="~/Content/news/@Url.Content(Model.news_img)">
+    </div>
+    <div>
+        @Html.LabelFor(x => x.news_name, new { @class = "label" })
+    </div>
+    <div>
+        @Html.TextBoxFor(x => x.news_name, new { @class = "textbox" })
+        @Html.ValidationMessageFor(x => x.news_name)
+    </div>
+    <div>
+        @Html.LabelFor(x => x.news_desc, new { @class = "label" })
+    </div>
+    <div>
+        @Html.TextAreaFor(x => x.news_desc, new { @class = "textarea_lg" })
+        @Html.ValidationMessageFor(x => x.news_desc)
+    </div>
+
+    <input type="submit" value="Update" class="buttonstyle" />
+    <a href="@Url.Action("NewsAdminIndex", "News")" class="buttonstyle">Cancel</a>
+}
+

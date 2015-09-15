@@ -1,0 +1,37 @@
+﻿@model IEnumerable<RiversideHealthCare.Models.volunteer_application_form>
+
+@{
+    ViewBag.Title = "VolunteerIndex";
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+}
+
+<h2>Volunteer Page</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td>@x.fname</td>
+                <td>@x.lname</td>
+                <td>
+                    @Html.ActionLink("View", "VolLIstById", new { id = x.Id })/
+                    @Html.ActionLink("Delete", "DeleteApplication", new { id = x.Id })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

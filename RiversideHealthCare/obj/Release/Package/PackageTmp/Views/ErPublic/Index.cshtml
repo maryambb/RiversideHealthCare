@@ -1,0 +1,15 @@
+﻿@model RiversideHealthCare.Models.ERCurrentTime
+@{
+    ViewBag.Title = "Index";
+}
+
+<div id="slERMain">
+    <div id="waitTime">
+        <h2>Your Current Wait Time:</h2>
+        @Html.DisplayFor(x => x.waitTime)
+    </div>
+    <label> Would you like to enter into the ER wait room?</label>
+
+
+    <div id="#slerbutton"> @Html.ActionLink("Yes", "Insert") </div>
+</div>

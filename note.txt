@@ -1,0 +1,12 @@
+Smartphone size:
+sizes of main buttons
+top nav bar margin-right more to the right
+text-align locations
+font-sizes bigger
+
+tablet:
+text-align locations
+font-sizes bigger
+
+desktop:
+main nav is not showing

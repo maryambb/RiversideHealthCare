@@ -1,0 +1,52 @@
+﻿@model IEnumerable<RiversideHealthCare.Models.findDoctor>
+
+@{
+    ViewBag.Title = "doctorIndex";
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+}
+<div>
+<div style="float:left">
+    <h2>doctorIndex</h2>
+</div>
+
+<div style="float:right; padding-top:40px; padding-right:30px;">
+       <a href='@Url.Action("doctorInsert")' class="buttonstyle">Insert new doctor information</a>
+    </div>
+    <div style="clear:both"></div>
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Speciality</th>
+            <th>Location</th>
+            <th>Gender</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td>@x.fname</td>
+                <td>@x.lname</td>
+                <td>@x.speciality</td>
+                <td>@x.branch_id</td>
+                <td>@x.gender</td>
+                <td>
+                    @Html.ActionLink("View", "doctorDetails", new { id = x.Id })/
+                    @Html.ActionLink("Edit", "doctorUpdate", new { id = x.Id }) /
+                    @Html.ActionLink("Delete", "doctorDelete", new { id = x.Id })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

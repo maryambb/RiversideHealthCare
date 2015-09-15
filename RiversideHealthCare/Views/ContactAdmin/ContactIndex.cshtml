@@ -1,0 +1,47 @@
+﻿@model IEnumerable<RiversideHealthCare.Models.contact_list>
+@{
+    ViewBag.Title = "ContactIndex";
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+}
+<div>
+ <div style="float:left">
+      <h2>ContactIndex</h2>
+</div>
+
+  <div style="float:right; padding-top:40px; padding-right:30px;">
+       <a href='@Url.Action("ContactInsert")' class="buttonstyle">Insert New Contact</a>
+    </div>
+    <div style="clear:both"></div>
+</div>
+
+
+<table>
+    <thead>
+        <tr>
+            <th>Departments</th>
+            <th>Details</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td>@x.department</td>
+                <td>@x.detail</td>
+                <td>
+                    @Html.ActionLink("View", "ContactDetails", new { id = x.Id })/
+                    @Html.ActionLink("Edit", "ContactUpdate", new { id = x.Id }) /
+                    @Html.ActionLink("Delete", "ContactDelete", new { id = x.Id })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

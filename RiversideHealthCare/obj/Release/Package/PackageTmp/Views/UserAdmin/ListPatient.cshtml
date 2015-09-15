@@ -1,0 +1,48 @@
+﻿@model IEnumerable<RiversideHealthCare.Models.patient>
+
+@{
+    ViewBag.Title = "ListPatient";
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+}
+
+<div>
+    <div style="float:left">
+        <h2>Patients List</h2>
+    </div>
+
+    <div style="float:right; padding-top:40px; padding-right:30px;">
+        <a href='@Url.Action("CreatePatient", "UserAdmin")'>
+            <span class="buttonstyle">Create new patient</span>
+        </a>
+    </div>
+    <div style="clear:both"></div>
+</div>
+@* Here is the list of all patient *@
+<table>
+    <thead>
+        <tr>
+            <th>User name</th>
+            <th>Name</th>
+            <th>phone</th>
+            <th>email</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td>@x.user_name</td>
+                <td>@x.last_name, @x.first_name</td>
+                <td>@x.phone</td>
+                <td>@x.email</td>
+                <td>
+                    @Html.ActionLink("View Detail", "PatientDetail", new { id = x.id })/
+                    @Html.ActionLink("Delete", "PatientDelete", new { id = x.id })/
+                    @Html.ActionLink("Edit", "UpdatePatient", new { id = x.id })
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>

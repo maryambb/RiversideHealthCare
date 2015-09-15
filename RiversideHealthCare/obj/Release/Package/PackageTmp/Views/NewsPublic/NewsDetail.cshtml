@@ -1,0 +1,17 @@
+﻿@model RiversideHealthCare.Models.news
+
+<div class="news">
+    <!--CHANGE IMG SIZE ONCE CONTENT IS IN-->
+    <div class="news_image"><img style="width:220px;" src="~/Content/news/@Url.Content(Model.news_img)"></div>
+
+    <h1 id="news_title">@Html.DisplayFor(x => x.news_name)</h1>
+
+    <p class="news_date">Posted: @Html.DisplayFor(x => x.news_date)</p>
+
+    <p class="news_desc">@Html.DisplayFor(x => x.news_desc)</p>
+
+    <!--PUBLIC STYLES FOR BUTTONS ETC?-->
+    @Html.ActionLink("Home", "Index", "Home")
+    @Html.ActionLink("All News", "AllNews", "NewsPublic")
+
+</div>

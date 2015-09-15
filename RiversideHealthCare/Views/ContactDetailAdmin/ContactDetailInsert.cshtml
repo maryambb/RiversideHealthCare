@@ -1,0 +1,39 @@
+﻿@model RiversideHealthCare.Models.contact_detail
+
+@{
+    ViewBag.Title = "ContactDetailInsert";
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+}
+
+<h2>ContactDetailInsert</h2>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary()
+
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.name, new { @class = "label" })
+    </div>
+    <div class="editor-field">
+        @Html.TextBoxFor(model => model.name, new { @class = "textbox" })
+        @Html.ValidationMessageFor(model => model.name, "*")
+    </div>
+    <div class="editor-label">
+        @Html.LabelFor(model => model.phone, new { @class = "label" })
+    </div>
+    <div class="editor-field">
+        @Html.TextBoxFor(model => model.phone, new { @class = "textbox" })
+        @Html.ValidationMessageFor(model => model.phone, "*")
+    </div>
+
+    
+    <input type="submit" value="Insert" class="buttonstyle" />
+
+    <p>@Html.ActionLink("Back to list", "ContactDetailIndex")</p>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+

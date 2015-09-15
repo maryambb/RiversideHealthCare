@@ -1,0 +1,46 @@
+﻿@model RiversideHealthCare.Models.findDoctor
+
+@{
+    ViewBag.Title = "doctorIndex";
+}
+
+<div id="index-wrap">
+    <div class="container">
+        <h2>Physician Information</h2>
+        <div id="frm">
+
+            @using (Html.BeginForm())
+            {
+                @Html.ValidationSummary()
+
+                <div class="editor-label">
+                    @Html.LabelFor(Model => Model.speciality)
+                </div>
+                <div class="editor-field">
+                    @Html.DropDownListFor(Model => Model.speciality, new[] {
+                 new SelectListItem() {Text = "Cardiologist"},
+                 new SelectListItem() {Text = "Eye specialist"},
+                 new SelectListItem() {Text = "Heart Specialist"},
+                 new SelectListItem() {Text = "Surgeon"},
+                 new SelectListItem() {Text = "Urologists"},
+             }, "-- Select a category --", new { @class = "dropdown-list" })
+                </div>
+
+
+                <div style="float:none; margin-left:110px;">
+                    <input type="submit" value="Find" />
+                </div>
+
+            }
+
+        </div>
+
+        <div id="loading" style="display:none;">
+            <p> Processing result ... </p>
+        </div>
+    </div>
+</div>
+    @section scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+
+    }

@@ -1,0 +1,69 @@
+﻿@model RiversideHealthCare.Models.Navigation
+
+@{
+    ViewBag.Title = "Insert New Page :: Riverside Health Care";
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+}
+
+<h2>Insert New Content Page</h2>
+
+<img style="width:255px; float:right; margin-right: 110px;" src="@Url.Content("~/Content/images/addcontent/template1.jpg")" alt="Template 1" title="Template 1" />
+@*File upload*@
+    @using (Html.BeginForm("AddContentInsert", "AddContentAdmin", null, FormMethod.Post,
+                              new { enctype = "multipart/form-data" }))
+    {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+    <div class="editor-label">
+        @Html.LabelFor(x => x.title, new { @class = "label" })
+    </div>
+    <div class="editor-field">
+        @Html.TextBoxFor(x => x.title, new { @class = "textbox" })
+        @Html.ValidationMessageFor(x => x.title, "*")
+    </div>
+    <div class="editor-label">
+        @Html.LabelFor(x => x.subtitle, new { @class = "label" })
+    </div>
+    <div class="editor-field">
+        @Html.TextBoxFor(x => x.subtitle, new { @class = "textbox" })
+        @Html.ValidationMessageFor(x => x.subtitle, "*")
+    </div>
+    <div class="editor-label">
+        @Html.LabelFor(x => x.intro, new { @class = "label" })
+    </div>
+    <div class="editor-field">
+        @Html.TextAreaFor(x => x.intro, new { @class = "textarea" })
+        @Html.ValidationMessageFor(x => x.intro, "*")
+    </div>
+    <div class="editor-label">
+        @Html.LabelFor(x => x.description, new { @class = "label" })
+    </div>
+    <div class="editor-field">
+        @Html.TextAreaFor(x => x.description, new { @class = "textarea" })
+    </div>
+    <div class="editor-label">
+        @Html.LabelFor(x => x.content_text, new { @class = "label" })
+    </div>
+    <div class="editor-field">
+        @Html.TextAreaFor(x => x.content_text, new { @class = "description" })
+    </div>
+    <div class="editor-label">
+        @Html.LabelFor(model => model.content_image, new { @class = "label" })
+    </div>
+    <div class="editor-field">
+        <input type="file" name="file" id="ImagePath" />
+    </div>
+        <input type="submit" value="Insert" class="buttonstyle" />
+        @Html.ActionLink("Back to list", "AddContentIndex", "AddContentAdmin", new { @class = "buttonstyle" })
+
+        }
+
+
+        @section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+        }
+
+
+<script>
+    CKEDITOR.replace('content_text');
+</script>

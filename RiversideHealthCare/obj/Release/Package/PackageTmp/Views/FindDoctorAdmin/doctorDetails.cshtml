@@ -1,0 +1,44 @@
+﻿@model RiversideHealthCare.Models.findDoctor
+
+@{
+    ViewBag.Title = "doctorDetails";
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+}
+
+<h2>doctor Details</h2>
+
+<table>
+    <tr>
+        @* first name *@
+        <td>@Html.LabelFor(x => x.fname)</td>
+        <td>@Html.DisplayFor(x => x.fname)</td>
+    </tr>
+    <tr>
+        @* last name *@
+        <td>@Html.LabelFor(model => model.lname)</td>
+        <td>@Html.DisplayFor(x => x.lname) </td>
+    </tr>
+    <tr>
+        @* speciality *@
+        <td>@Html.LabelFor(model => model.speciality)</td>
+        <td>@Html.DisplayFor(x => x.speciality)</td>
+    </tr>
+    <tr>
+        @* location *@
+        <td>@Html.LabelFor(model => model.branch_id)</td>
+        <td>@Html.DisplayFor(x => x.branch_id) </td>
+    </tr>
+        <tr>
+        @* gender *@
+        <td>@Html.LabelFor(model => model.gender)</td>
+        <td>@Html.DisplayFor(x => x.gender)</td>
+    </tr>
+</table>
+
+
+ <p>@Html.ActionLink("Back to list", "doctorIndex")</p>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

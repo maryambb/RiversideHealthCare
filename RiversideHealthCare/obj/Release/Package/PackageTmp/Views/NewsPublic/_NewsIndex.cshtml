@@ -1,0 +1,18 @@
+﻿@model IEnumerable<RiversideHealthCare.Models.news>
+
+@{
+    ViewBag.Title = "AllNews";
+}
+<!--PARTIAL TO DISPLAY MOST RECENT 3 NEWS-->
+
+<ul id="top_news">
+    @foreach (var x in Model)
+    {
+        <li>
+            <img style="width:120px;" src="~/Content/news/@Url.Content(x.news_img)"><br />
+            @Html.ActionLink(x.news_name, "DetailIndex", new { id = x.news_id })<br />
+            Published: @x.news_date.ToString("d")
+        </li>
+    }
+</ul>
+<a href="@Url.Action("Index", "NewsPublic")" class="buttonstyle">All News</a>

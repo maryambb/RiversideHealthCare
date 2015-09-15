@@ -1,0 +1,43 @@
+﻿@model IEnumerable<RiversideHealthCare.Models.Product>
+
+@{
+    ViewBag.Title = "Giftshop Panel";
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+}
+
+<h1>@ViewBag.Message</h1>
+
+<hr />
+
+<p>@Html.ActionLink("Insert new gift product", "ProductInsert", "ProductAdmin", new { @class = "buttonstyle" })</p>
+<p><em>Click on product to view product details</em></p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Product ID</th>
+            <th>Product Name</th>
+            <th>Description</th>
+            <th>Unit Price</th>
+            <th>Stock</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in Model)
+        {
+            <tr id="filter_col1" data-column="0">
+                <td>@x.ProductId</td>
+                <td>@Html.ActionLink(x.Name, "ProductDetails", new { ProductId = x.ProductId })</td>
+                <td>@x.Description</td>
+                <td>$@x.UnitPrice</td>
+                <td>@x.Stock</td>
+                <td>@Html.ActionLink("Update", "ProductUpdate", new { ProductId = x.ProductId })/
+                @Html.ActionLink("Delete", "ProductDelete", new { ProductId = x.ProductId })</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@*Products + product images are taken from http://www.hospitalgiftshop.com/*@

@@ -1,0 +1,57 @@
+﻿@model RiversideHealthCare.Models.doctor
+@{
+    ViewBag.Title = "Doctor Detail";
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+}
+
+
+<h2>Detail Information of Dr.@Html.DisplayFor(x => x.first_name) @Html.DisplayFor(x => x.last_name)</h2>
+<img style="width:80px; height:90px;" src="~/Content/images/doctors/@Url.Content(Model.photo_path)" alt="Photo" />
+
+@* Here is the detailed information of docror *@
+<table>
+    <tr>
+        @* User name*@
+        <td>@Html.LabelFor(model => model.user_name)</td>
+        <td>@Html.DisplayFor(x => x.user_name)</td>
+    </tr>
+    <tr>
+        @* Department Name *@
+        <td>@Html.LabelFor(model => model.department_name)</td>
+        <td>@Html.DisplayFor(x => x.department_name) </td>
+    </tr>
+    <tr>
+        @* First Name *@
+        <td>@Html.LabelFor(model => model.first_name)</td>
+        <td>@Html.DisplayFor(x => x.first_name) </td>
+    </tr>
+    <tr>
+        @* Last Name *@
+        <td>@Html.LabelFor(model => model.last_name)</td>
+        <td>@Html.DisplayFor(x => x.last_name) </td>
+    </tr>
+    <tr>
+        @* Email *@
+        <td>@Html.LabelFor(model => model.email)</td>
+        <td>@Html.DisplayFor(x => x.email) </td>
+    </tr>
+    <tr>
+        @* Phone *@
+        <td>@Html.LabelFor(model => model.phone)</td>
+        <td>@Html.DisplayFor(x => x.phone) </td>
+    </tr>
+    <tr>
+        @* Specialty *@
+        <td>@Html.LabelFor(model => model.specialty)</td>
+        <td>@Html.DisplayFor(x => x.specialty) </td>
+    </tr>
+    <tr>
+        @* Bio *@
+        <td>@Html.LabelFor(model => model.bio)</td>
+        <td>@Html.DisplayFor(x => x.bio) </td>
+    </tr>
+    
+</table>
+<a href='@Url.Action("ListDoctor", "UserAdmin")' class="buttonstyle">
+    <span class="buttonstyle">Back to list</span>
+</a>

@@ -1,0 +1,133 @@
+﻿@*<section class="donationForm">
+    @Html.Action("_donationPartial", "DonationPublic")
+</section>*@
+
+@model RiversideHealthCare.Models.Donation
+@{
+    ViewBag.Title = "DonationInsert";
+    var branches = ViewBag.branches;
+    List<SelectListItem> branchesList = new List<SelectListItem>();
+    foreach (var x in branches)
+    {
+        branchesList.Add(
+            new SelectListItem()
+            {
+                Text = x.name,
+                Value = x.Id.ToString()
+            }
+
+        );
+    }
+}
+
+<h2>Donation Form</h2>
+<div id="frm">
+    @* This form is consist of information for inserting new donor along with connecting to Paypal *@
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary()
+
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.first_name, new { @class = "label" })
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.first_name, new { @class = "textbox" })
+            @Html.ValidationMessageFor(model => model.first_name, "*")
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.last_name, new { @class = "label" })
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.last_name, new { @class = "textbox" })
+            @Html.ValidationMessageFor(model => model.last_name, "*")
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.country, new { @class = "label" })
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.country, new[] {
+                 new SelectListItem() {Text = "Canada"},
+                 new SelectListItem() {Text = "Cuba"},
+                 new SelectListItem() {Text = "Dubai"},
+                 new SelectListItem() {Text = "Germany"},
+                 new SelectListItem() {Text = "Iran"},
+                 new SelectListItem() {Text = "India"},
+                 new SelectListItem() {Text = "United State"}
+             }, "-- Select Country --", new { @class = "dropdown-list" })
+
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.province, new { @class = "label" })
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.province, new { @class = "textbox" })
+            @Html.ValidationMessageFor(model => model.province, "*")
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.city, new { @class = "label" })
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.city, new { @class = "textbox" })
+            @Html.ValidationMessageFor(model => model.city, "*")
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.postal_code, new { @class = "label" })
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.postal_code, new { @class = "textbox" })
+            @Html.ValidationMessageFor(model => model.postal_code, "*")
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.email, new { @class = "label" })
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.email, new { @class = "textbox" })
+            @Html.ValidationMessageFor(model => model.email, "*")
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.phone, new { @class = "label" })
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.phone, new { @class = "textbox" })
+            @Html.ValidationMessageFor(model => model.phone, "*")
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.branch_id, new { @class = "label" })
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.branch_id, branchesList, "-- Select Designation --", new { @class = "dropdown-list" })
+
+        </div>
+        @Html.TextBoxFor(model => model.date, new { Value = DateTime.Now.ToString(), style = "display: none;" })
+        <div class="editor-label">
+            @Html.LabelFor(model => model.amount, new { @class = "label" })
+        </div>
+        <div class="editor-field">
+            <span>$ </span>
+            @Html.TextBoxFor(model => model.amount, new { @class = "textbox" })
+            <span style="color:red">*</span>
+            @Html.ValidationMessageFor(model => model.amount, "*")
+        </div>
+
+
+        //This part is for connecting to paypal
+        <form action="~/Home/DonationInsert" method="post">
+            <input type="hidden" name="cmd" value="_donations">
+            <input type="hidden" name="business" value="info@riverside.webelementz.com">
+            <input type="hidden" name="item_name" value="Donate to Riverside HealthCare">
+            <input type="hidden" name="currency_code" value="CAD">
+            <input type="hidden" name="amount">
+            <input type="submit" value="Proceed with Paypal" class="buttonstyle" />
+        </form>
+
+    }
+
+
+</div>
+
+
+
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

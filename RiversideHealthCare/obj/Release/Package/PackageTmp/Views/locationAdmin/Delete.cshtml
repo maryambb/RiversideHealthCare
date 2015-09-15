@@ -1,0 +1,19 @@
+﻿@model RiversideHealthCare.Models.location
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+}
+
+@*Confirms with user to delete a location*@
+<h2>Delete</h2>
+
+<h3> Are you sure you want to delete <em>"@Model.name"</em>?</h3>
+
+@using (Html.BeginForm())
+{
+    <div>
+        <input type="submit" value="Delete" class="buttonstyle" />
+        <br />
+        <br />
+        @Html.ActionLink("Back", "Details", new { id = Model.id })
+    </div>
+}

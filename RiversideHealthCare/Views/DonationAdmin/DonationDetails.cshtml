@@ -1,0 +1,79 @@
+﻿@model RiversideHealthCare.Models.Donation
+@{
+    ViewBag.Title = "DonationDetails";
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+    @Scripts.Render("~/Scripts/cms-menu.js");
+}
+
+<h1>Donation Record No. @Html.DisplayFor(x => x.id), Donor: @Html.DisplayFor(x =>x.first_name)</h1>
+@* here is all information of one specific donation *@
+<table>
+    <tr>
+        @* Donor First Name *@
+        <td>@Html.LabelFor(model => model.first_name)</td>
+        <td>@Html.DisplayFor(x => x.first_name)</td>
+    </tr>
+    <tr>
+        @* Donor Last Name *@
+        <td>@Html.LabelFor(model => model.last_name)</td>
+        <td>@Html.DisplayFor(x => x.last_name) </td>
+    </tr>
+    <tr>
+        @* Donor Country *@
+        <td>@Html.LabelFor(model => model.country)</td>
+        <td>@Html.DisplayFor(x => x.country) </td>
+    </tr>  
+    <tr>
+        @* Donor Province *@
+        <td>@Html.LabelFor(model => model.province)</td>
+        <td>@Html.DisplayFor(x => x.province) </td>
+    </tr>
+    <tr>
+        @* Donor City *@
+        <td>@Html.LabelFor(model => model.city)</td>
+        <td>@Html.DisplayFor(x => x.city) </td>
+    </tr>
+    <tr>
+        @* Donor Postal Code *@
+        @*<td>@Html.LabelFor(model => model.postal_code)</td>*@
+        <td><label>Postal Code:</label></td>
+        <td>@Html.DisplayFor(x => x.postal_code) </td>
+    </tr>
+    <tr>
+        @* Donor Email *@
+        @*<td>@Html.LabelFor(model => model.email)</td>*@
+        <td><label>Email address:</label></td>
+        <td>@Html.DisplayFor(x => x.email) </td>
+    </tr>
+    @if (@Model.phone != null) 
+    { 
+    <tr>
+        @* Donor Phone number *@
+        @*<td>@Html.LabelFor(model => model.phone)</td>*@
+        <td><label>Phone number:</label></td>
+        <td>@Html.DisplayFor(x => x.phone) </td>
+    </tr>
+    }
+    <tr>
+        @* Date of Donation *@
+        @*<td>@Html.LabelFor(model => model.date)</td>*@
+        <td><label>Date of donate:</label></td>
+        <td>@Html.DisplayFor(x => x.date) </td>
+    </tr>
+    <tr>
+        @* Donor amount *@
+        <td>@Html.LabelFor(model => model.amount)</td>
+        <td>@Html.DisplayFor(x => x.amount) </td>
+    </tr>
+</table>
+
+
+<a href='@Url.Action("DonationUpdate", "DonationAdmin", new { id = Model.id })' class="buttonstyle">
+   Edit
+</a>
+<a href='@Url.Action("DonationDelete", "DonationAdmin", new { id = Model.id })' class="buttonstyle">
+    Delete
+</a>
+<a href='@Url.Action("Index", "DonationAdmin")' class="buttonstyle">
+    Back to list
+</a>

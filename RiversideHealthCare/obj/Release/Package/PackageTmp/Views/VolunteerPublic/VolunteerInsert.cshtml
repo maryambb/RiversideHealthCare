@@ -1,0 +1,130 @@
+﻿@model RiversideHealthCare.Models.VolunteerApplicationValidation
+
+@{
+    ViewBag.Title = "VolunteerInsert";
+
+}
+<div class="container">
+    <h2 id="heading">Volunteer Application Form</h2>
+
+    <div id="frm">
+
+        @using (Html.BeginForm())
+        {
+            @Html.ValidationSummary(true)
+
+            <div class="editor-label">
+                @Html.LabelFor(model => model.fname)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.fname)
+                @Html.ValidationMessageFor(model => model.fname, "*")
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.lname)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.lname)
+                @Html.ValidationMessageFor(model => model.lname, "*")
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.address)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.address)
+                @Html.ValidationMessageFor(model => model.address, "*")
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.city)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.city)
+                @Html.ValidationMessageFor(model => model.city, "*")
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.postal_code)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.postal_code)
+                @Html.ValidationMessageFor(model => model.postal_code, "*")
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.country)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.country)
+                @Html.ValidationMessageFor(model => model.country, "*")
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.phone)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.phone)
+                @Html.ValidationMessageFor(model => model.phone, "*")
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.email)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.email)
+                @Html.ValidationMessageFor(model => model.email, "*")
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.gender)
+            </div>
+            <div class="editor-field">
+                @Html.RadioButtonFor(model => model.gender, "Male", true) Male  @Html.RadioButtonFor(model => model.gender, "Female", false) Female
+                @Html.ValidationMessageFor(model => model.gender, "*")
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.college)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.college)
+                @Html.ValidationMessageFor(model => model.college, "*")
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.year)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.year)
+                @Html.ValidationMessageFor(model => model.year, "*")
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.language)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.language)
+                @Html.ValidationMessageFor(model => model.language, "*")
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.vol_exp)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.vol_exp)
+                @Html.ValidationMessageFor(model => model.vol_exp, "*")
+            </div>
+            <div class="editor-label">
+                @Html.LabelFor(model => model.availability)
+            </div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.availability)
+                @Html.ValidationMessageFor(model => model.availability, "*")
+            </div>
+
+            <div style="float:left; margin-left:110px;">
+                <input type="submit" value="Submit" />
+            </div>
+        }
+
+
+    </div>
+
+    <div id="loading" style="display:none;">
+        <p> Processing result ... </p>
+    </div>
+    <div class="container">
+
+        @section scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+        }

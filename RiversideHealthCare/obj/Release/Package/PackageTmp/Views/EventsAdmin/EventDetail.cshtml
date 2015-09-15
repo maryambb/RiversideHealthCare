@@ -1,0 +1,33 @@
+﻿@model RiversideHealthCare.Models.events
+
+@*INCLUDE CMS LAYOUT*@
+@{
+    ViewBag.Title = "Event Detail";
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+}
+
+<!--FIX DATETOSTRING-->
+<h1>Event Detail: @Html.DisplayFor(x => x.ev_title)</h1>
+<table>
+    <tbody>
+        <tr>
+            <td>@Html.LabelFor(x => x.ev_title):</td>
+            <td>@Html.DisplayFor(x => x.ev_title)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(x => x.ev_date):</td>
+            <td>@Html.DisplayFor(x => x.ev_date)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(x => x.ev_location):</td>
+            <td> @Html.DisplayFor(x => x.ev_location)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(x => x.ev_desc):</td>
+            <td>@Html.DisplayFor(x => x.ev_desc)</td>
+        </tr>
+    </tbody>
+</table>
+
+@*BUTTON BACK TO MAIN EVENTS ADMIN PAGE*@
+<a href="@Url.Action("EventsAdminIndex", "EventsAdmin")" class="buttonstyle">Back</a>

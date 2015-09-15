@@ -1,0 +1,17 @@
+﻿@model RiversideHealthCare.Models.Navigation
+
+@{
+    ViewBag.Title = "Delete Page :: Riverside Health Care";
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+}
+
+<h2>Delete @Model.title?</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+            @*Confirm delete*@
+            <input type="submit" value="Delete?" onclick="return confirm('Are you sure you want to delete this item?');" class="buttonstyle" />
+            @Html.ActionLink("Back to list", "AddContentIndex", new { @class = "buttonstyle" })
+        
+    }

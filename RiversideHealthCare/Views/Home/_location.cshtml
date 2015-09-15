@@ -1,0 +1,15 @@
+﻿@model RiversideHealthCare.Models.location
+@{
+    ViewBag.Title = "Welcome to Riverside Health Care";
+}
+@*Partial view for the map and address*@
+<div class="gMap"> <iframe  frameborder="1" scrolling="no" marginheight="0" marginwidth="0" src="https://www.google.ca/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=@Html.DisplayFor(x => x.address), @Html.DisplayFor(x => x.postalCode),Canada>&amp;aq=&amp;sspn=0.111915,0.295601&amp;ie=UTF8&amp;hq=&amp;hnear=@Html.DisplayFor(x => x.address),@Html.DisplayFor(x => x.postalCode),canada&amp;t=m&amp;z=12&amp;output=embed"></iframe></div>
+<div id="sllocMain">
+    <ul class="slul">
+        <li><b>Name: </b>@Html.DisplayFor(x => x.name)</li>
+        <li><em>Address: </em>@Html.DisplayFor(x => x.address)</li>
+        <li><em>Postal Code:</em> @Html.DisplayFor(x => x.postalCode)</li>
+        <li><em>Country: </em>@Html.DisplayFor(x => x.country) </li>
+        <li><em>Phone Number: </em> @Html.DisplayFor(x => x.phone) </li>
+    </ul>
+</div>

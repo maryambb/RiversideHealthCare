@@ -1,0 +1,21 @@
+﻿@model RiversideHealthCare.Models.location
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+}
+
+<h2>Administrative Details</h2>
+
+
+<h3> @Html.DisplayFor(x => x.name)</h3>
+<p>@Html.DisplayFor(x => x.address)</p>
+<p>@Html.DisplayFor(x => x.postalCode)</p>
+<p>@Html.DisplayFor(x => x.country)</p>
+<p>@Html.DisplayFor(x => x.phone)</p>
+
+
+
+<p>
+    @Html.ActionLink("Back", "Index")
+    @Html.ActionLink("Update", "Update", new { id = Model.id }) | @Html.ActionLink("Delete", "Delete", new { id = Model.id })
+</p>

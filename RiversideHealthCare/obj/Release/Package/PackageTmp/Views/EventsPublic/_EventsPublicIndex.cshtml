@@ -1,0 +1,19 @@
+﻿@model IEnumerable<RiversideHealthCare.Models.events>
+
+@{
+    ViewBag.Title = "Events";
+}
+
+<div class="container">
+    <table id="featured_events">
+
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td>@Html.ActionLink(x.ev_title, "EventDetail", new { id = x.ev_id })</td>
+                <td>@x.ev_date.ToString("d")</td>
+            </tr>
+        }
+    </table>
+    <a href="@Url.Action("AllEvents", "EventsPublic")" class="buttonstyle">All Events</a>
+</div>

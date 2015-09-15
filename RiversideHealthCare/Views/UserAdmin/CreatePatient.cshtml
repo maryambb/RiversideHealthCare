@@ -1,0 +1,151 @@
+﻿@model RiversideHealthCare.Models.RegisterModel
+@{
+    ViewBag.Title = "CreatePatient";
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+}
+
+<h2>Add New Patient</h2>
+
+@*This form is for creating patient with admin*@
+<div id="log_form">
+   @using (Html.BeginForm())
+   {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+
+       //Username 
+       <div class="editor-label">
+            @Html.LabelFor(model => model.UserName, new { @class = "label" })
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.UserName, new { @class = "textbox" })
+            @Html.ValidationMessageFor(model => model.UserName, "*")
+        </div>
+       //Password
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Password, new { @class = "label" })
+        </div>
+        <div class="editor-field">
+            @Html.PasswordFor(model => model.Password, new { @class = "textbox" })
+            @Html.ValidationMessageFor(model => model.Password, "*")
+        </div>
+       //Confirm password
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ConfirmPassword, new { @class = "label" })
+        </div>
+        <div class="editor-field">
+            @Html.PasswordFor(model => model.ConfirmPassword, new { @class = "textbox" })
+            @Html.ValidationMessageFor(model => model.ConfirmPassword, "*")
+        </div>
+       //Health card number
+        <div class="editor-label">
+            @Html.LabelFor(model => model.health_card, new { @class = "label" })
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.health_card, new { @class = "textbox" })
+            @Html.ValidationMessageFor(model => model.health_card, "*")
+        </div>
+       //First name
+        <div class="editor-label">
+            @Html.LabelFor(model => model.first_name, new { @class = "label" })
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.first_name, new { @class = "textbox" })
+            @Html.ValidationMessageFor(model => model.first_name, "*")
+        </div>
+       //Last name
+        <div class="editor-label">
+            @Html.LabelFor(model => model.last_name, new { @class = "label" })
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.last_name, new { @class = "textbox" })
+            @Html.ValidationMessageFor(model => model.last_name, "*")
+        </div>
+       //birth date
+        <div class="editor-label">
+            @Html.LabelFor(model => model.bith_date, new { @class = "label" })
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.bith_date, new { @type = "date" })
+            @Html.ValidationMessageFor(model => model.bith_date, "*")
+        </div>
+       //gender
+        <div class="editor-label">
+            @Html.LabelFor(model => model.gender, new { @class = "label" })
+        </div>
+        <div class="editor-field">
+           @Html.DropDownListFor(model => model.gender, new[] {
+                         new SelectListItem() {Text = "Female"},
+                         new SelectListItem() {Text = "Male"}
+                     }, "-- Select Gender --", new { @class = "dropdown-list" })
+        </div>
+       //email
+        <div class="editor-label">
+            @Html.LabelFor(model => model.email, new { @class = "label" })
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.email, new { @class = "textbox" })
+            @Html.ValidationMessageFor(model => model.email, "*")
+        </div>
+       //phone
+        <div class="editor-label">
+            @Html.LabelFor(model => model.phone, new { @class = "label" })
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.phone, new { @class = "textbox" })
+            @Html.ValidationMessageFor(model => model.phone, "*")
+        </div>
+       //address
+        <div class="editor-label">
+            @Html.LabelFor(model => model.address, new { @class = "label" })
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.address, new { @class = "textbox" })
+            @Html.ValidationMessageFor(model => model.address, "*")
+        </div>
+       //Postal code
+        <div class="editor-label">
+            @Html.LabelFor(model => model.postal_code, new { @class = "label" })
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.postal_code, new { @class = "textbox" })
+            @Html.ValidationMessageFor(model => model.postal_code, "*")
+        </div>
+       //city
+        <div class="editor-label">
+            @Html.LabelFor(model => model.city, new { @class = "label" })
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.city, new { @class = "textbox" })
+            @Html.ValidationMessageFor(model => model.city, "*")
+        </div>
+       //Province
+        <div class="editor-label">
+            @Html.LabelFor(model => model.province, new { @class = "label" })
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(m => m.province, new[] {
+                                                    new SelectListItem(){Text = "Alberta", Value="AB"},
+                                                    new SelectListItem(){Text = "British Columbia", Value="BC"},
+                                                    new SelectListItem(){Text = "Manitoba", Value="MA"},
+                                                    new SelectListItem(){Text = "New Brunswick", Value="NB"},
+                                                    new SelectListItem(){Text = "Newfoundland", Value="NF"},
+                                                    new SelectListItem(){Text = "Nova Scotia", Value="NS"},
+                                                    new SelectListItem(){Text = "Ontario", Value="ON"},
+                                                    new SelectListItem(){Text = "PEI", Value="PE"},
+                                                    new SelectListItem(){Text = "Quebec", Value="QC"},
+                                                    new SelectListItem(){Text = "Saskatchewan", Value="SK"}
+                                                    }, "-- Select Province --", new { @class = "dropdown-list" })
+        </div>
+    <input type="button" value="Cancel" onclick="javascript:document.location.href='@Url.Action("ListPatient", "UserAdmin")'" class="buttonstyle" />
+    <input type="submit" value="Create" class="buttonstyle" />
+
+   }
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+

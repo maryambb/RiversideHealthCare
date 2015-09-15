@@ -1,0 +1,22 @@
+﻿@model RiversideHealthCare.Models.ERWaitQueue
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+}
+
+@*Asks user to confirm about deleting a paitent*@
+
+<h2>Delete</h2>
+
+<h3> Are you sure you want to delete this from the waiting list</h3>
+
+
+@using (Html.BeginForm())
+{
+    <div>
+        <input type="submit" value="Delete" class="buttonstyle"/>
+        <br />
+        <br />
+        @Html.ActionLink("Back", "Index")
+    </div>
+}

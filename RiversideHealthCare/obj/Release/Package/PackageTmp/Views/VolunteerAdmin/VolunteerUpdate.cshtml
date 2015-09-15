@@ -1,0 +1,47 @@
+﻿@model RiversideHealthCare.Models.volunteer
+
+@{
+    ViewBag.Title = "VolunteerUpdate";
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+}
+
+<h2>VolunteerUpdate</h2>
+
+@using (Html.BeginForm())
+{
+    //Show the Validation summay
+    @Html.ValidationSummary(true)
+
+
+    @Html.HiddenFor(model => model.Id)
+    <div class="editor-label">
+        @Html.LabelFor(model => model.position)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.position)
+        @Html.ValidationMessageFor(model => model.position, "*")
+    </div>
+    <div class="editor-label">
+        @Html.LabelFor(model => model.location)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.location)
+        @Html.ValidationMessageFor(model => model.location, "*")
+    </div>
+    <div class="editor-label">
+        @Html.LabelFor(model => model.requirement)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.requirement)
+        @Html.ValidationMessageFor(model => model.requirement, "*")
+    </div>
+
+
+    <input type="submit" value="Update" class="buttonstyle" />
+
+    <p>@Html.ActionLink("Back to list", "VolunteerIndex")</p>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

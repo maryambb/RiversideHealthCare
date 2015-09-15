@@ -1,0 +1,52 @@
+﻿@model IEnumerable<RiversideHealthCare.Models.Donation>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+}
+
+<div>
+    <div style="float:left">
+        <h2>Manage Donations</h2>
+    </div>
+
+   
+    <div style="clear:both"></div>
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <th>Donor Name</th>
+            <th>Designation</th>
+            <th>Amount</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td>@x.first_name @x.last_name</td>
+                <td>@x.Branch.name</td>
+                <td>@x.amount $</td>
+                <td>
+                   
+                    @Html.ActionLink("View", "DonationDetails", new { id = x.id }) / 
+                    @Html.ActionLink("Edit", "DonationUpdate", new { id = x.id }) /
+                    @Html.ActionLink("Delete", "DonationDelete", new { id = x.id })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+    
+
+
+

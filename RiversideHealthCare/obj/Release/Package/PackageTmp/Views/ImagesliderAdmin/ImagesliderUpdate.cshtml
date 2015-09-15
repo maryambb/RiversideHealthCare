@@ -1,0 +1,55 @@
+﻿@model RiversideHealthCare.Models.Imageslider
+
+@{
+    ViewBag.Title = "Update Image :: Riverside Health Care";
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+}
+
+
+@using (Html.BeginForm("ImagesliderUpdate", "ImagesliderAdmin", null, FormMethod.Post,
+                              new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    @*Passing hidden Id here for corresponding selection*@
+
+    @Html.HiddenFor(x => x.ImageId)
+    <div class="editor-field">
+        @Html.LabelFor(x => x.Name, new { @class = "label" })
+    </div>
+    <div class="editor-field">
+        @Html.TextBoxFor(x => x.Name, new { @class = "textbox" })
+        @Html.ValidationMessageFor(x => x.Name, "*")
+    </div>
+    <fieldset>
+        <legend>Current image: @Html.DisplayFor(model => model.Image, new { @class = "label" })</legend>
+        <div>
+            <img style="width:380px;" src="~/Content/images/imageslider/@Url.Content(Model.Image)" alt="IMAGES" />
+        </div>
+        <div>
+            <input type="file" name="file" id="ImagePath" />
+        </div>
+    </fieldset>
+
+    <div class="editor-field">
+        @Html.LabelFor(x => x.Comment, new { @class = "label" })
+    </div>
+    <div class="editor-field">
+        @Html.TextAreaFor(x => x.Comment, new { @class = "textarea" })
+        @Html.ValidationMessageFor(x => x.Comment, "*")
+    </div>
+    <div class="editor-field">
+        @Html.LabelFor(x => x.Link, new { @class = "label" })
+    </div>
+    <div class="editor-field">
+        @Html.TextBoxFor(x => x.Link, new { @class = "textbox" })
+        @Html.ValidationMessageFor(x => x.Link, "*")
+    </div>
+    <input type="submit" value="Update" class="buttonstyle" />
+    @Html.ActionLink("Back", "ImagesliderIndex", new { ImageId = Model.ImageId }, new { @class = "buttonstyle" })
+
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

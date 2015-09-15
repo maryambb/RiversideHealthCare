@@ -1,0 +1,17 @@
+﻿@model RiversideHealthCare.Models.Navigation
+
+@{
+    ViewBag.Title = "Welcome :: Riverside Health Care";
+}
+<div class="container">
+    <div class="NewPage">
+        <h2>@Html.DisplayFor(x => x.title)</h2>
+        <h3>@Html.DisplayFor(x => x.subtitle)</h3>
+        <h3>@Html.DisplayFor(x => x.intro)</h3>
+    </div>
+    <div class="NewPageContent">
+        <img class="content-image" src="~/Content/images/addcontent/@Url.Content(Model.content_image)" alt="IMAGES" />
+
+        <p>@Html.Raw(Model.content_text)</p>
+    </div>
+</div>

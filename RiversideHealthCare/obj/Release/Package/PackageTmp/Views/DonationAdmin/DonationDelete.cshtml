@@ -1,0 +1,28 @@
+﻿@model RiversideHealthCare.Models.Donation
+@{
+    ViewBag.Title = "DonationDelete";
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+}
+
+
+
+<h2>
+    Deleting a donor!
+</h2>
+<h4>Are you sure you want to delete <em>@Model.first_name @Model.last_name?</em></h4>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div>
+            <input type="submit" value="Delete" class="buttonstyle"/>
+            <a href='@Url.Action("Index", "DonationAdmin")'> <span class="buttonstyle">Back to list</span> </a>
+        </div>
+    }
+
+   
+
+
+    @section scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }

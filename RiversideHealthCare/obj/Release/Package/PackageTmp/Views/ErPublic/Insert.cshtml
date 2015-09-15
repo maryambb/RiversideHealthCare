@@ -1,0 +1,43 @@
+﻿@model RiversideHealthCare.Models.ERWaitQueue
+@{
+    ViewBag.Title = "Insert";
+}
+
+@*User inputs their information to be put into the queue*@
+<div class="content-wrapper">
+    <div id="slERMainInsert">
+        @using (Html.BeginForm())
+        {
+            @Html.ValidationSummary()
+            <label> First Name: </label>
+            @Html.TextBoxFor(model => model.fName);
+            <br />
+            <label> Last Name: </label>
+            @Html.TextBoxFor(model => model.lName);
+            <br />
+            <label>What is your current Condition: </label>
+            <br />
+            <div class="slerradio">
+                @Html.RadioButtonFor(model => model.condition, 1)
+            </div>
+            @Html.LabelFor(model => model.condition, "In Serious Pain")
+            <div class="slerradio">
+                @Html.RadioButtonFor(model => model.condition, 2)
+            </div>
+            @Html.LabelFor(model => model.condition, "Not a lot of pain")
+            <div class="slerradio">
+                @Html.RadioButtonFor(model => model.condition, 3)
+            </div>
+            @Html.LabelFor(model => model.condition, "Little pain")
+
+
+            <br />
+            <input type="submit" value="Insert" />
+        }
+        <p> @Html.ActionLink("Back", "Index")</p>
+
+        @section Scripts{
+            @Scripts.Render("~/bundles/jqueryval")
+        }
+    </div>
+</div>

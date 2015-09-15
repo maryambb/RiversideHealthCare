@@ -1,0 +1,30 @@
+﻿@model RiversideHealthCare.Models.faq
+    @{
+        ViewBag.Title = "Update";
+        Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+    }
+
+    <h2>Update</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.HiddenFor(x => x.id)
+        @Html.LabelFor(x => x.question, new { @class = "label" })
+        @Html.TextAreaFor(x => x.question, new { @class = "textarea" })
+
+        <br /> <br />
+
+        @Html.LabelFor(x => x.answer, new { @class = "label" })
+        @Html.TextAreaFor(x => x.answer, new { @class = "textarea" })
+
+        <br /><br />
+
+        <input type="submit" value="Update" class="buttonstyle" />
+    }
+    <p>
+        @Html.ActionLink("Back", "Index", new { id = Model.id })
+    </p>
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }

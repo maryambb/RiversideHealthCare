@@ -1,0 +1,21 @@
+﻿@model RiversideHealthCare.Models.Product
+
+@{
+    ViewBag.Title = "Gift Products";
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+}
+
+<h2>@ViewBag.Message</h2>
+
+@*Display details on products selected*@
+<h3>@Html.DisplayFor(x => x.Name)</h3>
+<img src="~/Content/images/giftshop/@Url.Content(Model.Image)" alt="IMAGES" />
+<p style="width: 600px">@Html.DisplayFor(x => x.Description)</p>
+<p>$@Html.DisplayFor(x => x.UnitPrice)</p>
+<p>Qty @Html.DisplayFor(x => x.Stock)</p>
+
+<p>
+    @Html.ActionLink("Back to list", "ProductIndex", "ProductAdmin", new { @class = "buttonstyle" })
+    @Html.ActionLink("Update", "ProductUpdate", new { ProductId = Model.ProductId }, new { @class = "buttonstyle" })
+    @Html.ActionLink("Delete", "ProductDelete", new { ProductId = Model.ProductId }, new { @class = "buttonstyle" })
+</p>

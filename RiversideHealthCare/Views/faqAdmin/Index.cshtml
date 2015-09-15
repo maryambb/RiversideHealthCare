@@ -1,0 +1,15 @@
+﻿@model IEnumerable<RiversideHealthCare.Models.faq>
+@{
+    ViewBag.Title = "FAQ Admin";
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+}
+
+@*Shows a detailed record of a paitent*@
+<h2>FAQ Admin</h2>
+<p> @Html.ActionLink("Insert a new question", "Insert", "faqAdmin")</p>
+<ul>
+    @foreach (var x in Model)
+    {
+        <li>@Html.ActionLink(x.question, "Details", new { id = x.id })</li>
+    }
+</ul>

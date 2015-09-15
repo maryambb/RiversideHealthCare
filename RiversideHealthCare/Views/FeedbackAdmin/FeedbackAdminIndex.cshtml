@@ -1,0 +1,41 @@
+﻿@model IEnumerable<RiversideHealthCare.Models.feedback>
+
+@{
+    ViewBag.Title = "FeedbackAdminIndex";
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+}
+
+<h1>Admin - Feedback</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>name</th>
+            <th>email</th>
+            <th>feedback</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in Model)
+        {
+            using (Html.BeginForm("FeedbackAdminDelete", "FeedbackAdmin", new { id = x.fb_id }))
+            {
+                //PROTECT AGAINST CSRF
+                @Html.AntiForgeryToken()
+                //DISPLAY ALL FEEDBACK
+                <tr>
+                    <td>@Html.DisplayFor(y => x.fb_lname), @Html.DisplayFor(y => x.fb_fname)</td>
+
+                    <td>@Html.ActionLink(x.fb_email, "SendMail", "Feedback", new { email = x.fb_email })</td>
+
+                    <td>@Html.DisplayFor(y => x.fb_comment)</td>
+
+                    <td><a href="@Url.Action("FeedbackDetail", "FedbackAdmin")"></a></td>
+                    
+                    @*DELETE W.CONFIRMATION POPUP*@
+                    <td><input type="submit" value="delete" onclick="return confirm('Are you sure you want to delete this item?');" class="buttonstyle" /></td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

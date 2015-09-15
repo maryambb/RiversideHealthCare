@@ -1,0 +1,75 @@
+﻿@model RiversideHealthCare.Models.JobApplicant
+@{
+    ViewBag.Title = "ApplicantDetails";
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+    @Scripts.Render("~/Scripts/cms-menu.js");
+}
+
+<h2>Applicant Name: "@Html.DisplayFor(x => x.first_name) @Html.DisplayFor(x => x.last_name)" </h2>
+
+<table>
+    <tr>
+        @* Showing Job that applied for *@
+        <td>@Html.LabelFor(model => model.JobPost_id, new { @class = "label" })</td>
+        <td>@Html.DisplayFor(x => x.JobPost.title)</td>
+    </tr>
+    <tr>
+        @* Applicant First Name *@
+        <td>@Html.LabelFor(model => model.first_name, new { @class = "label" })</td>
+        <td>@Html.DisplayFor(x => x.first_name)</td>
+    </tr>
+    <tr>
+        @* Applicant First Name  *@
+        <td>@Html.LabelFor(model => model.last_name, new { @class = "label" })</td>
+        <td>@Html.DisplayFor(x => x.last_name)</td>
+    </tr>
+    <tr>
+        @* Email *@
+        @*<td>@Html.LabelFor(model => model.email, new { @class = "label" })</td>*@
+        <td><label>Email address:</label></td>
+        <td>@Html.DisplayFor(x => x.email) </td>
+    </tr>
+    <tr>
+        @* Phone *@
+        @*<td>@Html.LabelFor(model => model.phone, new { @class = "label" })</td>*@
+        <td><label>Phone number:</label></td>
+        <td>@Html.DisplayFor(x => x.phone) </td>
+    </tr>
+    <tr>
+        @* Status *@
+        <td>@Html.LabelFor(model => model.status, new { @class = "label" })</td>
+        <td>@Html.DisplayFor(x => x.status) </td>
+    </tr>
+    <tr>
+        @* Date of Posting Job *@
+        <td>@Html.LabelFor(model => model.date, new { @class = "label" })</td>
+        <td>@Html.DisplayFor(x => x.date.Date) </td>
+    </tr>
+    <tr>
+        @* Description *@
+        <td>@Html.LabelFor(model => model.description, new { @class = "label" })</td>
+        <td>@Html.DisplayFor(x => x.description) </td>
+    </tr>
+    <tr>
+        @* Dowloding resume *@
+        <td><label class="label">Resume</label></td>
+        <td><a href="~/Content/applicantInfo/resume/@Model.resume_path" class="buttonstyledownload">Download Resume</a></td>
+    </tr>
+    <tr>
+        @* Dowloding cover_letter *@
+        <td><label class="label">Cover letter</label></td>
+        <td><a href="~/Content/applicantInfo/cover_letter/@Model.cover_letter_path" class="buttonstyledownload">Download Cover Letter</a></td>
+    </tr>
+    
+    
+</table>
+
+
+<a href='@Url.Action("ApplicantUpdate", "JobPostAdmin", new { id = Model.id })' class="buttonstyle">
+    Edit
+</a>
+<a href='@Url.Action("ApplicantDelete", "JobPostAdmin", new { id = Model.id })' class="buttonstyle">
+    Delete
+</a>
+<a href='@Url.Action("Applicants", "JobPostAdmin")' class="buttonstyle">
+    Back to list</a>

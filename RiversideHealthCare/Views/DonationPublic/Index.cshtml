@@ -1,0 +1,38 @@
+﻿@model IEnumerable<RiversideHealthCare.Models.Donation>
+@{
+    ViewBag.Title = "Index";
+}
+
+<div id="index-wrap">
+
+    <div id="donate">
+        <div id="donate-header">
+            <h2>Thank You for supporting Riverside health care</h2>
+        </div>
+        <div id="donate-body">
+            <p>
+                Thank you for supporting Riverside health care. Our mission is to raise funds for Riverside Health Care for the purchase of medical equipment;
+                with particular emphasis on developing a strong secondary health care facility at
+                La Verendrye Hospital in Fort Frances for the benefit of all residents to the area.
+            </p>
+            <div class="buttonclass">
+                <a href='@Url.Action("DonationInsert", "DonationPublic")' class="buttonstyle">
+                    Donate Now
+                </a>
+            </div>
+        </div>
+        
+    </div>
+
+    
+
+    
+
+
+    
+
+</div>
+
+    @section scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }

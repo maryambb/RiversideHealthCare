@@ -1,0 +1,47 @@
+﻿@model RiversideHealthCare.Models.events
+
+@{
+    ViewBag.Title = "News Admin Index";
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+}
+@*FIX DATE FORMAT*@
+
+<h2>Update: @Model.ev_title</h2>
+@*PASS EVENT ID TO FORM & DISPLAY CURRENT VALUES*@
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(x => x.ev_id)
+    <div>
+        @Html.LabelFor(x => x.ev_title, new { @class = "label" })
+    </div>
+    <div>
+        @Html.TextBoxFor(x => x.ev_title, new { @class = "textbox" })
+        @Html.ValidationMessageFor(x => x.ev_title)
+    </div>
+    <div>
+        @Html.LabelFor(x => x.ev_date, new { @class = "label" })
+    </div>
+    <div>
+        @Html.TextBoxFor(x => x.ev_date, new { @class = "textbox" })
+        @Html.ValidationMessageFor(x => x.ev_date)
+    </div>
+    <div>
+        @Html.LabelFor(x => x.ev_location, new { @class = "label" })
+    </div>
+    <div>
+        @Html.TextBoxFor(x => x.ev_location, new { @class = "textbox" })
+        @Html.ValidationMessageFor(x => x.ev_location)
+    </div>
+    <div>
+        @Html.LabelFor(x => x.ev_desc, new { @class = "label" })
+    </div>
+    <div>
+        @Html.TextAreaFor(x => x.ev_desc, new { @class = "textarea_lg" })
+        @Html.ValidationMessageFor(x => x.ev_desc)
+    </div>
+
+    <input type="submit" value="Update" class="buttonstyle" />
+    <a href="@Url.Action("EventsAdminIndex","EventsAdmin")" class="buttonstyle">Cancel</a>
+}
+

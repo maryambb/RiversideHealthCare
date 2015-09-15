@@ -1,0 +1,37 @@
+﻿@model RiversideHealthCare.Models.volunteer
+
+
+@{
+    ViewBag.Title = "VolunteerDetails";
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+}
+
+<h2>Volunteer Details</h2>
+
+
+<table>
+    <tr>
+        @* Position *@
+        <td>@Html.LabelFor(model => model.position)</td>
+        <td>@Html.DisplayFor(x => x.position)</td>
+    </tr>
+    <tr>
+        @* Location *@
+        <td>@Html.LabelFor(model => model.location)</td>
+        <td>@Html.DisplayFor(x => x.location) </td>
+    </tr>
+    <tr>
+        @*Requirements*@
+        <td>@Html.LabelFor(model => model.requirement)</td>
+        <td>@Html.DisplayFor(x => x.requirement) </td>
+    </tr>
+</table>
+
+
+<p>@Html.ActionLink("Back to list", "VolunteerIndex")</p>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

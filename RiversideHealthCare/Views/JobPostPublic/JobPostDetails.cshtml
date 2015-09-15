@@ -1,0 +1,55 @@
+﻿@model RiversideHealthCare.Models.JobPost
+@{
+    ViewBag.Title = "JobPostDetails";
+    @Scripts.Render("~/Scripts/cms-menu.js");
+}
+@* Information for one job post *@
+
+<div id="index-wrap">
+    <div class="container">
+        <h1 style="color:#0e6594;">"@Html.DisplayFor(x => x.title)" </h1>
+        <table>
+            <tr>
+                @* Job Post Title *@
+                <td>@Html.LabelFor(model => model.title, new { @class = "label" })</td>
+                <td>@Html.DisplayFor(x => x.title)</td>
+            </tr>
+            <tr>
+                @* Job Category *@
+                <td>@Html.LabelFor(model => model.JobCategory_id, new { @class = "label" })</td>
+                <td>@Html.DisplayFor(x => x.JobCategory.name) </td>
+            </tr>
+            <tr>
+                @* Description *@
+                <td>@Html.LabelFor(model => model.description, new { @class = "label" })</td>
+                @*<td>@Html.DisplayFor(x => x.description) </td>*@
+                <td width="800px">@Html.Raw(Model.description)</td>
+            </tr>
+            <tr>
+                @* Date of Posting Job *@
+                <td><label class="label">Date of posting</label></td>
+                <td>@Html.DisplayFor(x => x.date) </td>
+            </tr>
+            <tr>
+                @* Email *@
+                <td><label class="label">Email address</label></td>
+                <td>@Html.DisplayFor(x => x.email) </td>
+            </tr>
+
+            <tr>
+                @* Status *@
+                <td>@Html.LabelFor(model => model.status, new { @class = "label" })</td>
+                <td>@Html.DisplayFor(x => x.status) </td>
+            </tr>
+        </table>
+        <div style="padding-top:20px;">
+            <a href='@Url.Action("ApplicantInsert", "JobPostPublic", new { id = Model.id })' class="buttonstyle">
+                Apply
+            </a>
+            <a href='@Url.Action("Index", "JobPostPublic")' class="buttonstyle">
+                Back to list
+            </a>
+        </div>
+
+    </div>
+    </div>

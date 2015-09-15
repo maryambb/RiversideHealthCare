@@ -1,0 +1,43 @@
+﻿@model RiversideHealthCare.Models.volunteer
+
+@{
+    ViewBag.Title = "VolunteerInsert";
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+}
+
+<h2>VolunteerInsert</h2>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary()
+
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.position, new { @class = "label" })
+    </div>
+    <div class="editor-field">
+        @Html.TextBoxFor(model => model.position, new { @class = "textbox" })
+        @Html.ValidationMessageFor(model => model.position, "*")
+    </div>
+    <div class="editor-label">
+        @Html.LabelFor(model => model.location, new { @class = "label" })
+    </div>
+    <div class="editor-field">
+        @Html.TextBoxFor(model => model.location, new { @class = "textbox" })
+        @Html.ValidationMessageFor(model => model.location, "*")
+    </div>
+    <div class="editor-label">
+        @Html.LabelFor(model => model.requirement, new { @class = "label" })
+    </div>
+    <div class="editor-field">
+        @Html.TextBoxFor(model => model.requirement, new { @class = "textbox" })
+        @Html.ValidationMessageFor(model => model.requirement, "*")
+    </div>
+
+    <input type="submit" value="Insert" class="buttonstyle" />
+
+    <p>@Html.ActionLink("Back to list", "VolunteerIndex")</p>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

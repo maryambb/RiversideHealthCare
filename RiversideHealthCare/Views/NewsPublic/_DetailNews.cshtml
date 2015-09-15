@@ -1,0 +1,14 @@
+﻿@model RiversideHealthCare.Models.news
+
+<div class="news">
+
+    <h1 class="heading">@Html.DisplayFor(x => x.news_name)</h1>
+    <div class="full_image"><img src="~/Content/news/@Url.Content(Model.news_img)"></div>
+    <p >     @Html.DisplayFor(x => x.news_date)</p>
+    <p class="  news_desc">@Html.DisplayFor(x => x.news_desc)</p>
+
+
+    <a href="@Url.Action("Index", "Home")" class="buttonstyle">Home</a>
+    <a href="@Url.Action("Index", "NewsPublic")" class="buttonstyle">All Events</a>
+
+</div>

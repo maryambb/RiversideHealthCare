@@ -1,0 +1,20 @@
+﻿@model RiversideHealthCare.Models.Imageslider
+
+@{
+    ViewBag.Title = "Image Details :: Riverside Health Care";
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+}
+
+<h2>Image Details</h2>
+
+@*Display details on image selection*@
+<h3>Name: @Html.DisplayFor(x => x.Name)</h3>
+<img style="width:700px" src="~/Content/images/imageslider/@Url.Content(Model.Image)" alt="IMAGES" />
+<p>Size reduced for preview purpose only</p>
+<h3>@Html.DisplayFor(x => x.Comment)</h3>
+
+<p>
+    @Html.ActionLink("Back to list", "ImagesliderIndex", "ImagesliderAdmin", new { @class = "buttonstyle" })
+    @Html.ActionLink("Update", "ImagesliderUpdate", new { ImageId = Model.ImageId }, new { @class = "buttonstyle" })
+    @Html.ActionLink("Delete", "ImagesliderDelete", new { ImageId = Model.ImageId }, new { @class = "buttonstyle" })
+</p>

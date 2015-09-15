@@ -1,0 +1,53 @@
+﻿@model RiversideHealthCare.Models.Product
+
+@{
+    ViewBag.Title = "Update Giftshop";
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+}
+
+<h2>@ViewBag.Message</h2>
+
+@using (Html.BeginForm("ProductUpdate", "ProductAdmin", null, FormMethod.Post,
+                              new { enctype = "multipart/form-data" }))
+{
+    <table>
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        <tr>
+            @*Passing hidden Id here for corresponding selection*@
+            @Html.HiddenFor(x => x.ProductId)
+
+            <td>@Html.LabelFor(x => x.Name, new { @class = "label" })</td>
+            <td>@Html.TextBoxFor(x => x.Name, new { @class = "textbox" })</td>
+            <td>@Html.ValidationMessageFor(x => x.Name, "*")</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(model => model.Image, new { @class = "label" })</td>
+            <td><input type="file" name="file" id="ImagePath" /></td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(x => x.Description, new { @class = "label" })</td>
+            <td>@Html.TextAreaFor(x => x.Description, new { @class = "textarea" })</td>
+            <td>@Html.ValidationMessageFor(x => x.Description, "*")</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(x => x.UnitPrice, new { @class = "label" })</td>
+            <td>@Html.TextBoxFor(x => x.UnitPrice, new { @class = "textbox" })</td>
+            <td>@Html.ValidationMessageFor(x => x.UnitPrice, "*")</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(x => x.Stock, new { @class = "label" })</td>
+            <td>@Html.TextBoxFor(x => x.Stock, new { @class = "textbox" })</td>
+            <td>@Html.ValidationMessageFor(x => x.Stock, "*")</td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Update" class="buttonstyle" />
+            @Html.ActionLink("Back to list", "ProductIndex", new { ProductId = Model.ProductId }, new { @class = "buttonstyle" })
+            </td>
+        </tr>
+    </table>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

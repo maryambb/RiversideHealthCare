@@ -1,0 +1,141 @@
+﻿@model RiversideHealthCare.Models.UpdateDoctorModel
+@{
+    ViewBag.Title = "Update Doctor";
+    @Styles.Render("~/Content/SideBar.css")
+
+    List<SelectListItem> listItems = new List<SelectListItem>();
+    foreach (var item in ViewBag.DepartmentList)
+    {
+        if (item == @Model.department_name)
+        {
+            listItems.Add(new SelectListItem
+            {
+                Text = item,
+                Value = item,
+                Selected = true
+            });
+        }
+        else
+        {
+            listItems.Add(new SelectListItem
+            {
+                Text = item,
+                Value = item
+            });
+        }
+    }
+}
+
+
+
+<div id="index-wrap">
+    @*Side menu bar*@
+    <div class="left-menu">
+        <div id="cms-left-nav">
+            <a href='@Url.Action("DoctorProfile", "DoctorAccount")' class="left-mnu-itm">
+                Profile
+            </a>
+            <a href='@Url.Action("UpdateDoctor", "DoctorAccount")' class="left-mnu-itm">
+                Edit Profile
+            </a>
+            <a href='@Url.Action("Manage", "Account")' class="left-mnu-itm">
+                Change password
+            </a>
+        </div>@* -- end of cms-left-mnu  *@
+    </div>@* -- end of left-nav -- *@
+    <div style="float:left; margin:3px 30px;">
+        <h2>Update Doctor</h2>
+        @* Form for updating the doctor's info *@
+        <div id="log_form">
+            @using (Html.BeginForm("UpdateDoctor", "DoctorAccount", null, FormMethod.Post,
+                              new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary()
+
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.department_name, new { @class = "label" })
+                </div>
+                <div class="editor-field">
+                    @Html.DropDownListFor(model => model.department_name, listItems, new { @class = "dropdown-list" })
+                </div>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.first_name, new { @class = "label" })
+                </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(model => model.first_name, new { @class = "textbox" })
+                    @Html.ValidationMessageFor(model => model.first_name, "*")
+                </div>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.last_name, new { @class = "label" })
+                </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(model => model.last_name, new { @class = "textbox" })
+                    @Html.ValidationMessageFor(model => model.last_name, "*")
+                </div>
+
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.email, new { @class = "label" })
+                </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(model => model.email, new { @class = "textbox" })
+                    @Html.ValidationMessageFor(model => model.email, "*")
+                </div>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.phone, new { @class = "label" })
+                </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(model => model.phone, new { @class = "textbox" })
+                    @Html.ValidationMessageFor(model => model.phone, "*")
+                </div>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.specialty, new { @class = "label" })
+                </div>
+                <div class="editor-field">
+                    @Html.DropDownListFor(model => model.specialty, new[] {
+                                                        new SelectListItem(){Text = "Radiologist"},
+                                                        new SelectListItem(){Text = "Pathologists"},
+                                                        new SelectListItem(){Text = "Surgeons"},
+                                                        new SelectListItem(){Text = "Toxicolodists"},
+                                                        new SelectListItem(){Text = "Urologists"},
+                                                        new SelectListItem(){Text = "Diabetologists"},
+                                                        new SelectListItem(){Text = "Cardiologists"},
+                                                        new SelectListItem(){Text = "Oncologists"},
+                                                        new SelectListItem(){Text = "Gynaecologists"},
+                                                        new SelectListItem(){Text = "Otolaryngologists"}
+                                                        }, new { @class = "dropdown-list" })
+
+                </div>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.bio, new { @class = "label" })
+                </div>
+                <div class="editor-field">
+                    @Html.TextAreaFor(model => model.bio, new { @class = "textarea" })
+                    @Html.ValidationMessageFor(model => model.bio, "*")
+                </div>
+
+
+                <div class="editor-label">
+                    <label class="label">Upload new photo</label>
+                </div>
+                <div class="editor-label">
+                    <input type="file" name="image" id="photo_path" />
+                </div>
+
+                <div style="margin-top:20px;">
+                    <input type="submit" value="Update" class="buttonstyle" />
+                    <input type="button" value="Cancel" class="buttonstyle" onclick="javascript:document.location.href='@Url.Action("DoctorProfile", "DoctorAccount")'" />
+
+                </div>
+
+            }
+        </div>
+
+
+    </div>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

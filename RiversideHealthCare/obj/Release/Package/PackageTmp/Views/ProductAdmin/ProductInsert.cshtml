@@ -1,0 +1,53 @@
+﻿@model RiversideHealthCare.Models.Product
+
+@{
+    ViewBag.Title = "Insert Gift Product";
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+}
+
+<h2>@ViewBag.Message</h2>
+
+
+@*File upload*@
+@using (Html.BeginForm("ProductInsert", "ProductAdmin", null, FormMethod.Post,
+                              new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    @Html.LabelFor(x => x.Name, new { @class = "label" })
+    @Html.TextBoxFor(x => x.Name, new { @class = "textbox" })
+    @Html.ValidationMessageFor(x => x.Name, "*")
+    <br />
+    <br />
+
+    <fieldset>
+        <legend>Image</legend>
+        <div>
+            <input type="file" name="file" id="ImagePath" />
+        </div>
+    </fieldset>
+    <br />
+    <br />
+    @Html.LabelFor(x => x.Description, new { @class = "label" })
+    @Html.TextAreaFor(x => x.Description, new { @class = "textarea" })
+    <br />
+    <br />
+    @Html.LabelFor(x => x.UnitPrice, new { @class = "label" })
+    @Html.TextBoxFor(x => x.UnitPrice, new { @class = "textbox" })
+    @Html.ValidationMessageFor(x => x.UnitPrice, "*")
+    <br />
+    <br />
+    @Html.LabelFor(x => x.Stock, new { @class = "label" })
+    @Html.TextBoxFor(x => x.Stock, new { @class = "textbox" })
+    @Html.ValidationMessageFor(x => x.Stock, "*")
+    <br />
+    <br />
+    <input type="submit" value="Insert" class="buttonstyle" />
+    @Html.ActionLink("Back to list", "ProductIndex", "ProductAdmin", new { @class = "buttonstyle" })
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

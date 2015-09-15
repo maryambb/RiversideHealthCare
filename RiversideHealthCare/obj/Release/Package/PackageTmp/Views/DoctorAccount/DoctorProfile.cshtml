@@ -1,0 +1,71 @@
+﻿@model RiversideHealthCare.Models.doctor
+@{
+    ViewBag.Title = "Doctor Profile";
+    @Styles.Render("~/Content/SideBar.css")
+}
+
+<div>
+    @*Side menu bar*@
+    <div class="left-menu">
+        <div id="cms-left-nav">
+            <a href='@Url.Action("DoctorProfile", "DoctorAccount")' class="left-mnu-itm">
+                Profile
+            </a>
+            <a href='@Url.Action("UpdateDoctor", "DoctorAccount", new { Model.id })' class="left-mnu-itm">
+                Edit Profile
+            </a>
+            <a href='@Url.Action("Manage", "Account")' class="left-mnu-itm">
+                Change password
+            </a>
+        </div>@* -- end of cms-left-mnu  *@
+    </div>@* -- end of left-nav -- *@
+    <div style="float:left; margin:3px 30px;">
+        <h2>Profile of Dr.@Model.last_name</h2>
+        @* Doctor image *@
+        <img style="width:80px; height:90px;" src="~/Content/images/doctors/@Url.Content(Model.photo_path)" alt="Photo" />
+        @* All information of doctor *@
+        <table>
+            <tr>
+                @* Health card number *@
+                <td>@Html.LabelFor(model => model.department_name, new { @class = "label" })</td>
+                <td>@Html.DisplayFor(x => x.department_name)</td>
+            </tr>
+            <tr>
+                @* First name *@
+                <td>@Html.LabelFor(model => model.first_name, new { @class = "label" })</td>
+                <td>@Html.DisplayFor(x => x.first_name)</td>
+            </tr>
+            <tr>
+                @* Last name *@
+                <td>@Html.LabelFor(model => model.last_name, new { @class = "label" })</td>
+                <td>@Html.DisplayFor(x => x.last_name)</td>
+            </tr>
+            <tr>
+                @* Email *@
+                <td>@Html.LabelFor(model => model.email, new { @class = "label" })</td>
+                <td>@Html.DisplayFor(x => x.email)</td>
+            </tr>
+            <tr>
+                @* Phone *@
+                <td>@Html.LabelFor(model => model.phone, new { @class = "label" })</td>
+                <td>@Html.DisplayFor(x => x.phone)</td>
+            </tr>
+            <tr>
+                @* Address *@
+                <td>@Html.LabelFor(model => model.specialty, new { @class = "label" })</td>
+                <td>@Html.DisplayFor(x => x.specialty)</td>
+            </tr>
+            <tr>
+                @* City *@
+                <td>@Html.LabelFor(model => model.bio, new { @class = "label" })</td>
+                <td>@Html.DisplayFor(x => x.bio)</td>
+            </tr>
+            
+        </table>
+       
+        @Html.ActionLink("Update", "UpdateDoctor", new { id = Model.id }, new { @class = "buttonstyle" })
+        @Html.ActionLink("Go back", "Index", "DoctorAccount", new { @class = "buttonstyle" })
+    </div>
+</div>
+
+

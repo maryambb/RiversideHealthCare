@@ -1,0 +1,100 @@
+﻿@model RiversideHealthCare.Models.RegisterModel
+@{
+    ViewBag.Title = "Register";
+}
+
+<div id="index-wrap">
+    <div class="container">
+        <hgroup class="title">
+            <h1>@ViewBag.Title.</h1>
+            <h2>Create a new account.</h2>
+        </hgroup>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary()
+
+            <fieldset>
+                <legend></legend>
+                <ol>
+                    <li>
+                        @Html.LabelFor(m => m.UserName, new { @class = "label" })
+                        @Html.TextBoxFor(m => m.UserName, new { @class = "textbox" })
+                    </li>
+                    <li>
+                        @Html.LabelFor(m => m.Password, new { @class = "label" })
+                        @Html.PasswordFor(m => m.Password, new { @class = "textbox" })
+                    </li>
+                    <li>
+                        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "label" })
+                        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "textbox" })
+                    </li>
+                    @* Customized fields for taking extra user input to create patient *@
+                    <li>
+                        @Html.LabelFor(m => m.health_card, new { @class = "label" })
+                        @Html.TextBoxFor(m => m.health_card, new { @class = "textbox" })
+                    </li>
+                    <li>
+                        @Html.LabelFor(m => m.first_name, new { @class = "label" })
+                        @Html.TextBoxFor(m => m.first_name, new { @class = "textbox" })
+                    </li>
+                    <li>
+                        @Html.LabelFor(m => m.last_name, new { @class = "label" })
+                        @Html.TextBoxFor(m => m.last_name, new { @class = "textbox" })
+                    </li>
+                    <li>
+                        @Html.LabelFor(m => m.bith_date, new { @class = "label" })
+                        @Html.TextBoxFor(m => m.bith_date, new { @type = "date" })
+                    </li>
+                    <li>
+                        @Html.LabelFor(m => m.gender, new { @class = "label" })
+                        @Html.DropDownListFor(m => m.gender, new[] {
+                         new SelectListItem() {Text = "Female"},
+                         new SelectListItem() {Text = "Male"}
+                     }, "-- Select Gender --", new { @class = "dropdown-list" })
+                    </li>
+                    <li>
+                        @Html.LabelFor(m => m.email, new { @class = "label" })
+                        @Html.TextBoxFor(m => m.email, new { @class = "textbox" })
+                    </li>
+                    <li>
+                        @Html.LabelFor(m => m.phone, new { @class = "label" })
+                        @Html.TextBoxFor(m => m.phone, new { @class = "textbox" })
+                    </li>
+                    <li>
+                        @Html.LabelFor(m => m.address, new { @class = "label" })
+                        @Html.TextBoxFor(m => m.address, new { @class = "textbox" })
+                    </li>
+                    <li>
+                        @Html.LabelFor(m => m.postal_code, new { @class = "label" })
+                        @Html.TextBoxFor(m => m.postal_code, new { @class = "textbox" })
+                    </li>
+                    <li>
+                        @Html.LabelFor(m => m.city, new { @class = "label" })
+                        @Html.TextBoxFor(m => m.city, new { @class = "textbox" })
+                    </li>
+                    <li>
+                        @Html.LabelFor(m => m.province, new { @class = "label" })
+                        @Html.DropDownListFor(m => m.province, new[] {
+                                                new SelectListItem(){Text = "Alberta", Value="AB"},
+                                                new SelectListItem(){Text = "British Columbia", Value="BC"},
+                                                new SelectListItem(){Text = "Manitoba", Value="MA"},
+                                                new SelectListItem(){Text = "New Brunswick", Value="NB"},
+                                                new SelectListItem(){Text = "Newfoundland", Value="NF"},
+                                                new SelectListItem(){Text = "Nova Scotia", Value="NS"},
+                                                new SelectListItem(){Text = "Ontario", Value="ON"},
+                                                new SelectListItem(){Text = "PEI", Value="PE"},
+                                                new SelectListItem(){Text = "Quebec", Value="QC"},
+                                                new SelectListItem(){Text = "Saskatchewan", Value="SK"}
+                                                }, "-- Select Province --", new { @class = "dropdown-list" })
+                    </li>
+                </ol>
+                <input type="submit" value="Register" class="buttonstyle" />
+            </fieldset>
+        }
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

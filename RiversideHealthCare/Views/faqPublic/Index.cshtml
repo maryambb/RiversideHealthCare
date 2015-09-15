@@ -1,0 +1,19 @@
+﻿@model IEnumerable<RiversideHealthCare.Models.faq>
+@{
+    ViewBag.Title = "faq";
+}
+
+@*Shows a list of questions*@
+<div id="index-wrap">
+    <div class="content-wrapper">
+        <h2 class="sltitle">Frequently Asked Questions</h2>
+        <div id="faqDiv">
+            <ol class="slolfaq">
+                @foreach (var x in Model)
+                {
+                    <li class="slfaqitem"> @Html.ActionLink(x.question, "details", new { id = x.id }) </li>
+                }
+            </ol>
+        </div>
+    </div>
+</div>

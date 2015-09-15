@@ -1,0 +1,156 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="~/Content/images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/SiteCMS.css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic|Roboto:400,500,700,400italic' rel='stylesheet' type='text/css'>
+    <script src="~/Scripts/ckeditor/ckeditor.js"></script>
+
+</head>
+<body>
+
+    @*--------------------*@
+    @* ----- HEADER ----- *@
+    @*--------------------*@
+    <div id="cms-head-container">
+
+        <div id="riverside-title">
+            @*logo here*@
+            <a href="@Url.Action("Index", "Home")"><img id="logo" src="@Url.Content("~/Content/images/logo.png")" alt="Home" title="Home" /></a>
+        </div>
+        <div id="sign-out">
+            @using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+            {
+                @Html.AntiForgeryToken()
+                <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+            }
+        </div>
+        <div id="user">
+            Hello, @Html.ActionLink(User.Identity.Name, "Manage", "Account", routeValues: null, htmlAttributes: new { @class = "username", title = "Manage" })!
+        </div>
+    </div>
+
+
+    @*----------------------*@
+    @* ----- LEFT MENU -----*@
+    @*----------------------*@
+    <div class="left-menu">
+
+       
+        <div id="cms-left-nav">
+
+            @* Emergency Wait Time *@
+            <a class="left-mnu-itm" href='@Url.Action("Index", "ErAdmin")'>
+                Emergency Wait Time
+            </a>
+
+            @* Doctors *@
+            <a href='@Url.Action("ListDoctor", "UserAdmin")' class="left-mnu-itm">
+                Doctors
+            </a>
+
+            @* Patients *@
+            <a href='@Url.Action("ListPatient", "UserAdmin")' class="left-mnu-itm">
+                Patients
+            </a>
+
+            @* Map Feature via Google Map *@
+            <a class="left-mnu-itm" href="@Url.Action("Index", "locationAdmin")">
+                Map
+            </a>
+
+            @* FAQ *@
+            <a class="left-mnu-itm" href="@Url.Action("Index", "faqAdmin")">
+                FAQ
+            </a>
+
+            @* Feedback Survey *@
+            <a class="left-mnu-itm" href="@Url.Action("FeedbackAdminIndex", "FeedbackAdmin")">
+                Feedback
+            </a>
+
+            @* News Alert *@
+            <a class="left-mnu-itm" href="@Url.Action("NewsAdminIndex", "News")">
+                News
+            </a>
+
+            @* Events Calendar *@
+            <a class="left-mnu-itm" href="@Url.Action("EventsAdminIndex", "EventsAdmin")">
+                Events
+            </a>
+
+            @* Image Slider *@
+            <a href='@Url.Action("ImagesliderIndex", "ImagesliderAdmin")' class="left-mnu-itm">
+                Image Slider
+            </a>
+
+            @*E-Commerce*@
+            <a href='@Url.Action("ProductIndex", "ProductAdmin")' class="left-mnu-itm">
+                Gift Shop
+            </a>
+
+            @*Add New Page*@
+            <a href='@Url.Action("AddContentIndex", "AddContentAdmin")' class="left-mnu-itm">
+                Add New Page
+            </a>
+
+            @*Find a Doctor*@
+            <a href='@Url.Action("doctorIndex", "FindDoctorAdmin")' class="left-mnu-itm">
+                Find a Doctor
+            </a>
+
+            @*Volunteer*@
+           <a href='@Url.Action("VolunteerIndex", "VolunteerAdmin")' class="left-mnu-itm">
+                Volunteer
+            </a>
+
+            @*Contact Directory*@
+            <a href='@Url.Action("ContactIndex", "ContactAdmin")' class="left-mnu-itm">
+               Contact Directory
+            </a>
+
+            @*Career*@
+            <a href='@Url.Action("Index", "JobPostAdmin")' class="left-mnu-itm">
+                Careers
+            </a>
+
+            @*Applicants*@
+            <a href='@Url.Action("Applicants", "JobPostAdmin")' class="left-mnu-itm">
+                Job Applicants
+            </a>
+
+            @*Donation*@
+            <a href='@Url.Action("Index", "DonationAdmin")' class="left-mnu-itm">
+                Donation
+            </a>
+
+        </div>@* -- end of cms-left-mnu  *@
+
+    </div>@* -- end of left-nav -- *@
+
+
+    @*-----------------*@
+    @* ----- BODY -----*@
+    @*-----------------*@
+    <div id="cms-main">
+        @RenderBody()
+        @Scripts.Render("~/bundles/jquery")
+        @RenderSection("scripts", required: false)
+    </div>
+
+
+    @*-------------------*@
+    @* ----- FOOTER -----*@
+    @*-------------------*@
+    <div id="cms-footer">
+        <p id="cms-copyright">&copy; 2015 Riverside Health Care</p>
+    </div>
+
+</body>
+</html>

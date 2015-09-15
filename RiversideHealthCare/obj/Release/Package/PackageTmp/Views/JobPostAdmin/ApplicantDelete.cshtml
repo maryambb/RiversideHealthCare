@@ -1,0 +1,29 @@
+﻿@model RiversideHealthCare.Models.JobApplicant
+@{
+    ViewBag.Title = "ApplicantDelete";
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+}
+
+<h2>
+    Deleting an applicant!
+</h2>
+<h4>Are you sure you want to delete <em>@Model.first_name @Model.last_name?</em></h4>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div>
+        @Html.TextBoxFor(model => model.resume_path, new { style = "display: none;" })
+        @Html.TextBoxFor(model => model.cover_letter_path, new { style = "display: none;" })
+        <input type="submit" value="Delete" class="buttonstyle" />
+        <a href='@Url.Action("Applicants", "JobPostAdmin")'> <span class="buttonstyle">Back to list</span> </a>
+
+    </div>
+}
+
+
+
+
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

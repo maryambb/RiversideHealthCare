@@ -1,0 +1,23 @@
+﻿@model RiversideHealthCare.Models.news
+
+@{
+    ViewBag.Title = "DetailNews";
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+}
+
+<h1>News Detail: @Model.news_name</h1>
+
+<table>
+    <tr>
+        <td><img style="width:120px;" src="~/Content/news/@Url.Content(Model.news_img)"></td>
+    </tr>
+    <tr>
+        <td>Date Posted: @Html.DisplayFor(x => x.news_date)</td>
+    </tr>
+    <tr>
+        <td>Description: @Html.DisplayFor(x => x.news_desc)</td>
+    </tr>
+</table>
+
+<a href='@Url.Action("NewsAdminIndex", "News")' class="buttonstyle">Back</a>
+<a href='@Url.Action("UpdateNews", "News", new { id = Model.news_id })' class="buttonstyle">Update</a>

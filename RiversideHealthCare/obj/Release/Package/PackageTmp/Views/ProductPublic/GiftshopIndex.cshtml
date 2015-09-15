@@ -1,0 +1,15 @@
+﻿@model IEnumerable<RiversideHealthCare.Models.Product>
+
+<ul class="giftshop-ul">
+    @foreach (var x in Model)
+    {
+        @*Display images from database*@
+        <li class="giftshop-li">
+            @Html.DisplayFor(model => x.Name)
+            <br />
+            <img src="~/Content/images/giftshop/@Url.Content(x.Image)" alt="IMAGES" />
+            <p>$@Html.DisplayFor(model => x.UnitPrice)</p>
+            <a href="@Url.Action("PurchaseForm", "ProductPublic", new { ProductId = x.ProductId })" class="buttonstyle">Purchase</a>
+        </li>
+    }
+</ul>

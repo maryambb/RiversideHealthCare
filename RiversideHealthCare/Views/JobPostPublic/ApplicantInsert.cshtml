@@ -1,0 +1,76 @@
+﻿@model RiversideHealthCare.Models.JobApplicant
+@{
+    ViewBag.Title = "ApplicantInsert";
+    @Scripts.Render("~/Scripts/cms-menu.js");
+    var Job_id = ViewBag.JobPost.id;
+    var Job_title = ViewBag.JobPost.title;
+}
+<div id="index-wrap">
+    <div class="container">
+        @* This form is for applicant to apply to specific job post *@
+        <div id="frm">
+
+            @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.ValidationSummary()
+
+                @*@Html.TextBoxFor(model => model.JobPost_id, new { value = Job_id , style = "display: none;" })*@
+
+                <div>
+                    <h1>Application form for applying to "@Job_title"</h1>
+                </div>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.first_name, new { @class = "label" })
+                </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(model => model.first_name, new { @class = "textbox" })
+                    @Html.ValidationMessageFor(model => model.first_name, "*")
+                </div>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.last_name, new { @class = "label" })
+                </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(model => model.last_name, new { @class = "textbox" })
+                    @Html.ValidationMessageFor(model => model.last_name, "*")
+                </div>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.email, new { @class = "label" })
+                </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(model => model.email, new { @class = "textbox" })
+                    @Html.ValidationMessageFor(model => model.email, "*")
+                </div>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.phone, new { @class = "label" })
+                </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(model => model.phone, new { @class = "textbox" })
+                    @Html.ValidationMessageFor(model => model.phone, "*")
+                </div>
+                @Html.TextBoxFor(model => model.date, new { Value = DateTime.Now.ToString(), style = "display: none;" })
+                <div class="editor-label">
+                    <label class="label">Upload your resume here</label>
+                </div>
+                <div class="editor-field">
+                    <input type="file" name="file1" id="resume_path" />
+                </div>
+                <div class="editor-label">
+                    <label class="label">Upload your cover letter here</label>
+                </div>
+                <div class="editor-field">
+                    <input type="file" name="file2" id="cover_letter_path" />
+                </div>
+                <div style="padding-top:20px;">
+                    <input type="submit" value="Apply" class="buttonstyle" />
+                    <a href='@Url.Action("Index", "JobPostPublic")' class="buttonstyle"> Back to list </a>
+                </div>
+
+
+
+
+            }
+
+
+        </div>
+    </div>
+</div>

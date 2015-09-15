@@ -1,0 +1,18 @@
+﻿@model RiversideHealthCare.Models.faq
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+}
+
+@*Shows a detailed faq*@
+<h2>Administrative Details</h2>
+
+
+<h3> @Html.DisplayFor(x => x.question)</h3>
+<p>@Html.DisplayFor(x => x.answer)</p>
+
+
+<p>
+    @Html.ActionLink("Back", "Index") |
+    @Html.ActionLink("Update", "Update", new { id = Model.id }) | @Html.ActionLink("Delete", "Delete", new { id = Model.id })
+</p>

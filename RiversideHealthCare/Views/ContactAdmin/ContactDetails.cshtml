@@ -1,0 +1,50 @@
+﻿@model RiversideHealthCare.Models.contact_list
+
+@{
+    ViewBag.Title = "ContactDetails";
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+}
+
+<h2>Contact Details</h2>
+
+<table>
+    <tr>
+        @* Department *@
+        <td>@Html.LabelFor(model => model.department)</td>
+        <td>@Html.DisplayFor(x => x.department)</td>
+    </tr>
+    <tr>
+        @* detail *@
+        <td>@Html.LabelFor(model => model.detail)</td>
+        <td>@Html.DisplayFor(x => x.detail) </td>
+    </tr>
+    <tr>
+        @* Location *@
+        <td>@Html.LabelFor(model => model.location)</td>
+        <td>@Html.DisplayFor(x => x.location)</td>
+    </tr>
+    <tr>
+        @* Phone *@
+        <td>@Html.LabelFor(model => model.phone)</td>
+        <td>@Html.DisplayFor(x => x.phone) </td>
+    </tr>
+    <tr>
+        @* Fax *@
+        <td>@Html.LabelFor(model => model.fax)</td>
+        <td>@Html.DisplayFor(x => x.fax)</td>
+    </tr>
+    <tr>
+        @* Head *@
+        <td>@Html.LabelFor(model => model.head)</td>
+        <td>@Html.DisplayFor(x => x.head) </td>
+    </tr>
+</table>
+
+
+ <p>@Html.ActionLink("Back to list", "ContactIndex")</p>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

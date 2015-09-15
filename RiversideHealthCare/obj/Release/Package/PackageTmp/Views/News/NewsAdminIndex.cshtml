@@ -1,0 +1,47 @@
+﻿@model IEnumerable<RiversideHealthCare.Models.news>
+
+@{
+    ViewBag.Title = "News Admin Index";
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+}
+
+<h1>All News Alerts</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Image</th>
+            <th>Date Posted</th>
+            <th>Headline</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var x in Model)
+        {
+            using (Html.BeginForm("NewsAdminDelete", "News", new { id = x.news_id }))
+            {
+                @Html.AntiForgeryToken()
+                <tr>
+                    <td><img style="width:120px;" src="~/Content/news/@Url.Content(x.news_img)"></td>
+                    <!--DISPLAY FORMATTED DATE-->
+                    <td>@x.news_date.ToString("d")</td>
+
+                    <td>@x.news_name</td>
+
+                    <td>
+                        @Html.ActionLink("View", "DetailNews", new { id = x.news_id })
+                        /@Html.ActionLink("Edit", "UpdateNews", new { id = x.news_id })
+                    </td>
+                    <td>
+                        <input type="submit" value="delete" name="action" onclick="return confirm('Are you sure you want to delete this item?');" class="buttonstyle" />
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+<a href='@Url.Action("InsertNews", "News")' class="buttonstyle">Add News</a>
+
+
+

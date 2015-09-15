@@ -1,0 +1,39 @@
+﻿@model IEnumerable<RiversideHealthCare.Models.volunteer>
+
+@{
+    ViewBag.Title = "VolunteerIndex";
+
+}
+
+<div class="container">
+<h1 id="heading">Be a volunteer at Riverside</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Positions Available</th>
+            <th>Locations</th>
+            <th>Requirements</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td>@x.position</td>
+                <td>@x.location</td>
+                <td>@x.requirement</td>
+                <td>
+                    @Html.ActionLink("Apply", "passID", new { id = x.Id })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+    <div class="container">
+
+
+        @section scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+        }

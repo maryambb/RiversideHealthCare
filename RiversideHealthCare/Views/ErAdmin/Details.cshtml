@@ -1,0 +1,19 @@
+﻿@model RiversideHealthCare.Models.ERWaitQueue
+    @{
+        ViewBag.Title = "Details";
+        Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+    }
+
+    @*Shows a detailed record of a paitent*@
+    <h2>Administrative Details</h2>
+
+
+    <p> @Html.DisplayFor(x => x.fName)</p>
+    <p> @Html.DisplayFor(x => x.lName)</p>
+    <p> @Html.DisplayFor(x => x.condition)</p>
+
+
+    <p>
+        @Html.ActionLink("Back", "Index") |
+        @Html.ActionLink("Update", "Update", new { id = Model.id }) | @Html.ActionLink("Delete", "Delete", new { id = Model.id })
+    </p>

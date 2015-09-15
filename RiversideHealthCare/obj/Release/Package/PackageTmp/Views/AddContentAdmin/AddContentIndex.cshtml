@@ -1,0 +1,44 @@
+﻿@model IEnumerable<RiversideHealthCare.Models.Navigation>
+
+@{
+    ViewBag.Title = "Add New Content Panel";
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+}
+
+<h1>@ViewBag.Message</h1>
+<p>@Html.ActionLink("Insert new image", "AddContentInsert", "AddContentAdmin")</p>
+
+<p>Template:</p>
+<ul>
+    @*Template 1 for admin to use*@
+    <li style="display:inline;">
+        <a href="@Url.Action("AddContentInsert", "AddContentAdmin")"><img style="width:75px;" src="@Url.Content("~/Content/images/addcontent/template1.jpg")" alt="Template 1" title="Template 1" /></a>
+    </li>
+</ul>
+
+<hr />
+
+<h2>Current pages</h2>
+@*Output current pages*@
+<table>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td>@x.title</td>
+                <td>@x.description</td>
+                <td>@Html.ActionLink("View", "Template1", new { id = x.id })/
+                @Html.ActionLink("Update", "AddContentUpdate", new { id = x.id })/
+                @Html.ActionLink("Delete", "AddContentDelete", new { id = x.id })</td>
+            </tr>
+        }
+    </tbody>
+</table>

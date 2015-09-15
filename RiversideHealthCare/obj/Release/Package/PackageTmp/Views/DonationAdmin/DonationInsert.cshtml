@@ -1,0 +1,127 @@
+﻿@model RiversideHealthCare.Models.Donation
+@{
+    ViewBag.Title = "DonationInsert";
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+    var branches = ViewBag.branches;
+    List<SelectListItem> branchesList = new List<SelectListItem>();
+    foreach (var x in branches)
+    {
+        branchesList.Add(
+            new SelectListItem()
+            {
+                Text = x.name,
+                Value = x.Id.ToString()
+            }
+
+        );
+    }
+}
+
+<h2>Donation Form</h2>
+<div id="frm">
+    @* Here is for adding new donation *@
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary()
+        @Html.AntiForgeryToken()
+
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.first_name, new { @class = "label" })
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.first_name, new { @class = "textbox" })
+            @Html.ValidationMessageFor(model => model.first_name, "*")
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.last_name, new { @class = "label" })
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.last_name, new { @class = "textbox" })
+            @Html.ValidationMessageFor(model => model.last_name, "*")
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.country, new { @class = "label" })
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.country, new[] {
+                 new SelectListItem() {Text = "Canada"},
+                 new SelectListItem() {Text = "Cuba"},
+                 new SelectListItem() {Text = "Dubai"},
+                 new SelectListItem() {Text = "Germany"},
+                 new SelectListItem() {Text = "Iran"},
+                 new SelectListItem() {Text = "India"},
+                 new SelectListItem() {Text = "United State"}
+             }, "-- Select Country --", new { @class = "dropdown-list" })
+
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.province, new { @class = "label" })
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.province, new { @class = "textbox" })
+            @Html.ValidationMessageFor(model => model.province, "*")
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.city, new { @class = "label" })
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.city, new { @class = "textbox" })
+            @Html.ValidationMessageFor(model => model.city, "*")
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.postal_code, new { @class = "label" })
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.postal_code, new { @class = "textbox" })
+            @Html.ValidationMessageFor(model => model.postal_code, "*")
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.email, new { @class = "label" })
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.email, new { @class = "textbox" })
+            @Html.ValidationMessageFor(model => model.email, "*")
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.phone, new { @class = "label" })
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.phone, new { @class = "textbox" })
+            @Html.ValidationMessageFor(model => model.phone, "*")
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.branch_id, new { @class = "label" })
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.branch_id, branchesList, "-- Select Designation --", new { @class = "dropdown-list" })
+
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.date, new { @class = "label" })
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.date, new { @class = "textbox" })
+            @Html.ValidationMessageFor(model => model.date, "*")
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.amount, new { @class = "label" })
+        </div>
+        <div class="editor-field">
+            <span>$ </span>
+            @Html.TextBoxFor(model => model.amount, new { @class = "textbox" })
+            <span style="color:red">*</span>
+            @Html.ValidationMessageFor(model => model.amount, "*")
+        </div>
+
+            <a href='@Url.Action("Index", "DonationAdmin")'> <span class="buttonstyle">Cancel</span> </a>
+    
+    }
+
+
+</div>
+
+
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

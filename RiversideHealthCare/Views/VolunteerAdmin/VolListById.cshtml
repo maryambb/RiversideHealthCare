@@ -1,0 +1,50 @@
+﻿@model RiversideHealthCare.Models.volunteer_application_form
+
+@{
+    ViewBag.Title = "VolListById";
+
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+}
+
+<h2>Volunteer Detail</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>Postal code</th>
+            <th>Country</th>
+            <th>Phone</th>
+            <th>Gender</th>
+            <th>College</th>
+            <th>Year</th>
+            <th>Language</th>
+            <th>Volunteer Experience(If any)</th>
+            <th>Availability</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Html.DisplayFor(x => x.fname)</td>
+            <td>@Html.DisplayFor(x => x.lname)</td>
+            <td>@Html.DisplayFor(x => x.address)</td>
+            <td>@Html.DisplayFor(x => x.city)</td>
+            <td>@Html.DisplayFor(x => x.postal_code)</td>
+            <td>@Html.DisplayFor(x => x.country)</td>
+            <td>@Html.DisplayFor(x => x.phone)</td>
+            <td>@Html.DisplayFor(x => x.gender)</td>
+            <td>@Html.DisplayFor(x => x.college)</td>
+            <td>@Html.DisplayFor(x => x.year)</td>
+            <td>@Html.DisplayFor(x => x.language)</td>
+            <td>@Html.DisplayFor(x => x.vol_exp)</td>
+            <td>@Html.DisplayFor(x => x.availability)</td>
+        </tr>
+    </tbody>
+</table>
+
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

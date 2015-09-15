@@ -1,0 +1,54 @@
+﻿@model IEnumerable<RiversideHealthCare.Models.JobPost>
+@{
+    ViewBag.Title = "Index";
+    var categories = ViewBag.categories;
+    List<SelectListItem> categoriesList = new List<SelectListItem>();
+    foreach (var x in categories)
+    {
+        categoriesList.Add(
+            new SelectListItem()
+            {
+                Text = x.name,
+                Value = x.id.ToString()
+            }
+
+        );
+    }
+}
+
+<div class="container">
+    @* List of all available job post *@
+    <div class="container">
+        <h2>Available Jobs</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Job category</th>
+                    <th>Date of posting</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var x in Model)
+                {
+                    <tr>
+                        <td>@x.title</td>
+                        <td>@x.JobCategory.name</td>
+                        <td>@x.date.ToString("d")</td>
+
+                        <td>
+                            @Html.ActionLink("View Details", "JobPostDetails", new { id = x.id })
+                            @*<a href="@Html.Partial("_JobPostDetailPartial", new ViewDataDictionary { { "id", x.id } })">View Details</a>*@
+
+
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+    @section scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }

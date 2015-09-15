@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11.25, 18.5" name="riversideLinq">
+  <DataContextMoniker Name="/riversideLinqDataContext" />
+  <nestedChildShapes>
+    <classShape Id="c9d13db8-c094-4de6-bbdc-82976fde3e0e" absoluteBounds="3, 0.5, 2, 3.1170068359375">
+      <DataClassMoniker Name="/riversideLinqDataContext/Donation" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0c39de99-4d26-40ae-b57b-aa1fba964e07" absoluteBounds="3.0149999999999997, 0.96, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="81258a2a-dce5-4a7c-8e0b-dd4af19cdfcd" absoluteBounds="0.75, 0.5, 2, 1.1939925130208333">
+      <DataClassMoniker Name="/riversideLinqDataContext/Branch" />
+      <nestedChildShapes>
+        <elementListCompartment Id="90426683-4f76-4aeb-bc16-ce419228d195" absoluteBounds="0.76499999999999968, 0.96, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 1.09699625651042); (2.81426666666667 : 1.09699625651042 : JumpStart); (2.98093333333333 : 1.09699625651042 : JumpEnd); (3 : 1.09699625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/riversideLinqDataContext/Branch/Branch_Donation" />
+      <nodes>
+        <classShapeMoniker Id="81258a2a-dce5-4a7c-8e0b-dd4af19cdfcd" />
+        <classShapeMoniker Id="c9d13db8-c094-4de6-bbdc-82976fde3e0e" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="90a40156-21fd-4df3-8a39-2b9ba3fd8264" absoluteBounds="4.375, 3.875, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/riversideLinqDataContext/JobPost" />
+      <nestedChildShapes>
+        <elementListCompartment Id="851d83ed-73c5-4494-91d9-e1b76b94cfc2" absoluteBounds="4.39, 4.335, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="14c8461f-083e-4a5d-9ebe-821f1f574028" absoluteBounds="1.875, 4.625, 2, 1.1939925130208333">
+      <DataClassMoniker Name="/riversideLinqDataContext/JobCategory" />
+      <nestedChildShapes>
+        <elementListCompartment Id="959cafcc-3584-44ee-af6c-e6479d7766de" absoluteBounds="1.8899999999999997, 5.085, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.781251 : 4.625); (2.781251 : 3.78125); (4.04166666666667 : 3.78125 : JumpStart); (4.20833333333333 : 3.78125 : JumpEnd); (5.375 : 3.78125); (5.375 : 3.875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/riversideLinqDataContext/JobCategory/JobCategory_JobPost" />
+      <nodes>
+        <classShapeMoniker Id="14c8461f-083e-4a5d-9ebe-821f1f574028" />
+        <classShapeMoniker Id="90a40156-21fd-4df3-8a39-2b9ba3fd8264" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="604d925c-62dd-47f6-bead-5601c4459858" absoluteBounds="6.875, 3, 2, 2.9247054036458331">
+      <DataClassMoniker Name="/riversideLinqDataContext/JobApplicant" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a2956ffc-6e67-43cd-93fc-6db92f66308e" absoluteBounds="6.89, 3.46, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(6.375 : 4.46875); (6.875 : 4.46875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/riversideLinqDataContext/JobPost/JobPost_JobApplicant" />
+      <nodes>
+        <classShapeMoniker Id="90a40156-21fd-4df3-8a39-2b9ba3fd8264" />
+        <classShapeMoniker Id="604d925c-62dd-47f6-bead-5601c4459858" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="249c4fe8-abe8-460d-ba8f-d23255ed7f49" absoluteBounds="0.875, 6.25, 2, 3.3093082682291666">
+      <DataClassMoniker Name="/riversideLinqDataContext/patient" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d745430e-ae5c-4c9f-acaa-f847d6999e64" absoluteBounds="0.88999999999999968, 6.71, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="fee40293-7c72-4ea5-9b64-86eb9fffe96d" absoluteBounds="3.25, 6.375, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/riversideLinqDataContext/doctor" />
+      <nestedChildShapes>
+        <elementListCompartment Id="43236f95-bbed-401d-9465-8674e707e00d" absoluteBounds="3.2649999999999997, 6.835, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d5ea79dd-5282-4dec-b8c3-fc1e2f7f06d6" absoluteBounds="0.75, 1.875, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/riversideLinqDataContext/Department" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3cb367ca-f646-4a7b-8919-051bf9131190" absoluteBounds="0.76499999999999968, 2.335, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(1.75 : 1.69399251302083); (1.75 : 1.875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/riversideLinqDataContext/Branch/Branch_Department" />
+      <nodes>
+        <classShapeMoniker Id="81258a2a-dce5-4a7c-8e0b-dd4af19cdfcd" />
+        <classShapeMoniker Id="d5ea79dd-5282-4dec-b8c3-fc1e2f7f06d6" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="6dec9209-cde4-4342-a3b5-2889f1b6b96a" absoluteBounds="0.5, 3.625, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/riversideLinqDataContext/Imageslider" />
+      <nestedChildShapes>
+        <elementListCompartment Id="58f71b03-bac2-47c8-81ab-8abf5597981a" absoluteBounds="0.515, 4.085, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d268de68-3f00-4a27-a593-0a33f479a3fe" absoluteBounds="5.125, 0.5, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/riversideLinqDataContext/Navigation" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a779ab72-f2da-4dcc-b84b-7f2eb4571666" absoluteBounds="5.14, 0.96, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7f0f59d2-1508-4c71-9868-c667c7d2f799" absoluteBounds="3.125, 3.875, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/riversideLinqDataContext/Order" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d6914e79-40a2-448d-a8f9-84bf1e1515e0" absoluteBounds="3.14, 4.335, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a014c23e-7555-4168-a91d-f0494ba7c1eb" absoluteBounds="0.5, 9.75, 2, 1.9631982421875">
+      <DataClassMoniker Name="/riversideLinqDataContext/Product" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4a73554c-7999-4bde-ad27-dbff5d5c1564" absoluteBounds="0.515, 10.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(0.5 : 10.7315991210937); (0.3464 : 10.7315991210937); (0.3464 : 3.55599537760417); (2.8976 : 3.55599537760417); (2.8976 : 0.0859833333333335); (4.125 : 0.0859833333333335); (4.125 : 3.875)]" manuallyRouted="true" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/riversideLinqDataContext/Product/Product_Order" />
+      <nodes>
+        <classShapeMoniker Id="a014c23e-7555-4168-a91d-f0494ba7c1eb" />
+        <classShapeMoniker Id="7f0f59d2-1508-4c71-9868-c667c7d2f799" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="e00db2c3-6f62-4c0e-b660-d4675aa2f07d" absoluteBounds="0.5, 11.875, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/riversideLinqDataContext/news" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a77e4b7b-f252-4a4c-b140-83179c0adf5e" absoluteBounds="0.51500000000000012, 12.335, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7c04e4b2-b125-4e1f-a134-744f3f4dd34a" absoluteBounds="2.875, 9.875, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/riversideLinqDataContext/events" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4bf1a08a-92c9-42fe-94c4-5699658e19e8" absoluteBounds="2.89, 10.335, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="0e120a17-1dbd-4678-ae0e-bfa075b34ebd" absoluteBounds="2.875, 11.875, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/riversideLinqDataContext/feedback" />
+      <nestedChildShapes>
+        <elementListCompartment Id="69958bfd-f46a-4c60-b61e-3e6c7862f811" absoluteBounds="2.8899999999999997, 12.335, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="499a3783-9c0d-4031-9f37-c26f8cf6a29f" absoluteBounds="5.75, 6.5, 2, 1.9631982421875">
+      <DataClassMoniker Name="/riversideLinqDataContext/location" />
+      <nestedChildShapes>
+        <elementListCompartment Id="029a3cb1-c185-4707-9d3f-68fa3f7d8acd" absoluteBounds="5.765, 6.9600000000000009, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="67e6ebf7-1513-474a-8aca-44d98ecd4842" absoluteBounds="8.5, 6.5, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/riversideLinqDataContext/ERWaitQueue" />
+      <nestedChildShapes>
+        <elementListCompartment Id="76ec28f8-1292-4491-bc3e-95666c2479a6" absoluteBounds="8.515, 6.96, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="08d2583a-3662-457a-a4ab-08a6480c0629" absoluteBounds="9, 5.125, 2, 1.1939925130208333">
+      <DataClassMoniker Name="/riversideLinqDataContext/ERCurrentTime" />
+      <nestedChildShapes>
+        <elementListCompartment Id="cfe7dc29-ca05-4004-a4ce-7ed62b4b1375" absoluteBounds="9.015, 5.585, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="5162c5b8-fa0e-46bf-a2c3-24d4d6bffc93" absoluteBounds="8.25, 8, 2, 1.3862939453125">
+      <DataClassMoniker Name="/riversideLinqDataContext/faq" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c26218e7-685c-4a07-ad39-1e9f756b45ea" absoluteBounds="8.265, 8.46, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="5c0122e1-f974-4c05-aa43-bb8f5cd067e2" absoluteBounds="5.75, 8.75, 2, 0.8093896484375005">
+      <DataClassMoniker Name="/riversideLinqDataContext/contact_list" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c580d752-cfb0-4d00-9d81-a3bc5005d8bb" isExpanded="false" absoluteBounds="5.765, 9.21, 1.9700000000000002, 0.2493896484375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="9a96b68b-ad1a-4af3-b205-d8d36e004841" absoluteBounds="6.25, 11.375, 2, 1.9631982421875">
+      <DataClassMoniker Name="/riversideLinqDataContext/findDoctor" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ddd8db6b-bef3-412b-b46a-95230b4ef3bc" absoluteBounds="6.265, 11.835, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="5cf3d94d-d35f-4819-80fb-d202c5518363" absoluteBounds="5.875, 13.625, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/riversideLinqDataContext/volunteer" />
+      <nestedChildShapes>
+        <elementListCompartment Id="52657954-dec9-4f4f-8184-2e13a5ab5d71" absoluteBounds="5.89, 14.085, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="aef3bc88-edeb-426a-85e9-4da42177694c" absoluteBounds="4, 14.375, 2, 3.8862125651041666">
+      <DataClassMoniker Name="/riversideLinqDataContext/volunteer_application_form" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0017e998-0e5f-41ec-963d-026e129d9b12" absoluteBounds="4.015, 14.835, 1.9700000000000002, 3.3262125651041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="cde10958-78b2-45c3-b6ce-322ec26e4ab9" absoluteBounds="0.625, 13.875, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/riversideLinqDataContext/contact_detail" />
+      <nestedChildShapes>
+        <elementListCompartment Id="75b29f32-6f78-4ad1-ace3-ac23815c3f8e" absoluteBounds="0.63999999999999968, 14.335, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

@@ -1,0 +1,118 @@
+﻿@{
+    ViewBag.Title = "Welcome :: Riverside Health Care";
+}
+
+<div id="index-wrap">
+    <div class="container">
+        @*imageslider feature partialview*@
+        <section class="imageslider">
+
+            @Html.Action("ImagesliderPublic", "ImagesliderPublic")
+
+        </section>
+
+
+        <!--set box icons-->
+        <div class="home-buttons">
+            <div class="col span_2_of_4">
+                <a href="@Url.Action("Index", "ErPublic")"><img class="main-btn" src="~/content/images/main_buttons01.jpg" alt="" /></a>
+            </div>
+            <div class="col span_2_of_4">
+                <a href="@Url.Action("Index", "DonationPublic")"><img class="main-btn" src="~/content/images/main_buttons02.jpg" alt="" /></a>
+            </div>
+            <div class="col span_2_of_4">
+                <a href=""><img class="main-btn" src="~/content/images/main_buttons04.jpg" alt="" /></a>
+            </div>
+            <div class="col span_2_of_4">
+                <a href="@Url.Action("GiftshopIndex", "ProductPublic")"><img class="main-btn bottom-row" src="@Url.Content("~/Content/images/main_buttons05.jpg")" alt="Gift Shop" title="Gift Shop" /></a>
+            </div>
+            <div class="col span_2_of_4">
+                <a href="@Url.Action("Index", "FeedbackPublic")"><img class="main-btn bottom-row" src="@Url.Content("~/Content/images/main_buttons06.jpg")" alt="Gift Shop" title="Gift Shop" /></a>
+            </div>
+        </div> <!--end section group-->
+        <div class="mobile_buttons">
+            <div class="mobile_btn">
+                <a href="@Url.Action("Index", "ErPublic")">ER Wait Times</a>
+            </div>
+            <div class="mobile_btn">
+                <a href="@Url.Action("Index", "DonationPublic")">Donate Now</a>
+            </div>
+            <div class="mobile_btn">
+                <a href="@Url.Action("GiftshopIndex", "ProductPublic")">Gift Shop</a>
+            </div>
+            <div class="mobile_btn">
+                <a href="@Url.Action("Index", "FeedbackPublic")">ER Wait Times</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="welcome">
+        <div class="left-col">
+            <h2>Welcome to Riverside Health Care</h2>
+            <p>Riverside Health Care is a fully accredite multi-site, multi-faceted health care system providing service to the Rainy River District in spectacular Northwestern Ontario. Our health care sites across the district serve a catchment area of over 20,000 residents in 15,500 square kilometers in the following communities.</p>
+            <div id="mission">
+                <h3>Our Mission</h3>
+                <p>Riverside Health Care provides high quality care experience. We support a safe & healthy work environment where each person is valued, respected & where personal and professional growth is encouraged. </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="slList">
+        @*Creates a viewdata for the map*@
+        @{
+            var locations = (IEnumerable<RiversideHealthCare.Models.location>)ViewData["locations"];
+        }
+        @{
+            var getId = ViewData["getLocId"];
+        }
+    </div>
+    <section id="feature-location">
+        <div class="h2-center">
+            <h2>Locations</h2>
+            <ul>
+                @section scripts
+                    {
+                    @Scripts.Render("~/bundles/jqueryval")
+                }
+                @foreach (var loc in locations)
+                {
+                    //Uses Ajax, when user clicks on link update the map only
+                    <li class="slList">
+                        @Ajax.ActionLink(@loc.name, "Map", "Home", new { id = @loc.id }, new AjaxOptions
+                                {
+                                    HttpMethod = "Post",
+                                    UpdateTargetId = "map_canvas",
+                                    InsertionMode = InsertionMode.Replace
+                                })
+                    </li>
+
+                }
+            </ul>
+            <!--Location map feature api-->
+            <div id="map_canvas">
+                @Html.Partial("_location")
+            </div>
+        </div>
+    </section> <!--end feature-location-->
+
+    <div class="newsEvents">
+        <section id="news">
+            <h2>Riverside Health Care News</h2>
+            @Html.Action("_NewsIndex", "NewsPublic")
+        </section>
+        <div class="right-col">
+            <div id="events">
+                <h2>Featured Events</h2>
+                @Html.Action("_EventsPublicIndex", "EventsPublic")
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $("#hamburger").click(function () {
+            $("#main_nav ul li").toggle(300);
+        });
+    });
+</script>

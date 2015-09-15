@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <link href='http://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'/>
+    <link href="~/Content/images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="keywords" content="hospital, riverside, health care, care, patient, doctor, help emergency, cure, medical, medicine, science, donation">
+    <meta http-equiv="X-UA-Compatible" content="IE=8;IE=9;IE=10;IE=edge" />
+    <link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700,700italic,400italic' rel='stylesheet' type='text/css'>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript" src="~/Content/ResponsiveSlides/responsiveslides.min.js"></script>
+
+</head>
+<body>
+    <header>
+        <div id="header-center">
+            @*logo here*@
+            <a href="@Url.Action("Index", "Home")"><img id="logo" src="@Url.Content("~/Content/images/logo.png")" alt="Home" title="Home" /></a>
+
+            <div class="float-right">
+                @*login here*@
+                <section id="top_nav">
+                    @Html.Partial("_LoginPartial")
+                </section>
+                <div id="hamburger">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                @*main nav bar partialview*@
+                <section id="main_nav">
+                    @{
+                        Html.RenderAction("_PartialNav","AddContentPublic");
+                    }
+                </section>
+
+            </div>
+        </div>
+    </header>
+
+
+    <div id="body">
+        @RenderSection("featured", required: false)
+        <section class="content-wrapper main-content clear-fix">
+            @RenderBody()
+        </section>
+    </div>
+
+
+    <!--footer section-->
+    <div class="clear"></div>
+      <div id="footer">
+          <div id="footerNav">
+              <ul>
+                  <li class="active"><a href="index.html"><span>Terms and Conditions of Use</span></a></li>
+                  <li><a href="#"><span>Legal Disclaimer</span></a></li>
+                  <li><a href="#"><span>Medical Disclaimer</span></a></li>
+                  <li><a href="#"><span>Website Privacy</span></a></li>
+                  <li><a href="#"><span>Join Our Team</span></a></li>
+                  <li>@Html.ActionLink("FAQ", "faq", "Index")</li>
+                  <li><a href="#"><span>Contact Us</span></a></li>
+              </ul>
+          </div>  
+          <div id="footerNote">
+              <p>&copy; @DateTime.Now.Year Riverside Health Care Facilities Inc. All rights reserved.</p>
+          </div>
+      </div>
+     <!--/end footer section-->
+    @RenderSection("scripts", required: false)
+</body>
+</html>

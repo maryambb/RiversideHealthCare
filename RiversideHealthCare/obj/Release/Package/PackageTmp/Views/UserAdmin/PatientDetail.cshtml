@@ -1,0 +1,70 @@
+﻿@model RiversideHealthCare.Models.patient
+@{
+    ViewBag.Title = "PatientDetail";
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+}
+
+<h2>Patient Detail</h2>
+@* Here is the detailed information of selected patient *@
+<table>
+    <tr>
+        @* Health Card *@
+        <td>@Html.LabelFor(model => model.health_card)</td>
+        <td>@Html.DisplayFor(x => x.health_card)</td>
+    </tr>
+    <tr>
+        @* First Name *@
+        <td>@Html.LabelFor(model => model.first_name)</td>
+        <td>@Html.DisplayFor(x => x.first_name) </td>
+    </tr>
+    <tr>
+        @* Last Name *@
+        <td>@Html.LabelFor(model => model.last_name)</td>
+        <td>@Html.DisplayFor(x => x.last_name) </td>
+    </tr>
+    <tr>
+        @* Patient Birth Date *@
+        <td>@Html.LabelFor(model => model.birth_date)</td>
+        @*<td>@Html.DisplayFor(x => x.birth_date) </td>*@
+        <td>@Model.birth_date.ToString("yyyy/mm/dd")</td>
+    </tr>
+    <tr>
+        @* Email *@
+        <td>@Html.LabelFor(model => model.email)</td>
+        <td>@Html.DisplayFor(x => x.email) </td>
+    </tr>
+    <tr>
+        @* Phone *@
+        <td>@Html.LabelFor(model => model.phone)</td>
+        <td>@Html.DisplayFor(x => x.phone) </td>
+    </tr>
+    <tr>
+        @* Address *@
+        <td>@Html.LabelFor(model => model.address)</td>
+        <td>@Html.DisplayFor(x => x.address) </td>
+    </tr>
+    <tr>
+        @* Postal Code *@
+        <td>@Html.LabelFor(model => model.postal_code)</td>
+        <td>@Html.DisplayFor(x => x.postal_code) </td>
+    </tr>
+    <tr>
+        @* City *@
+        <td>@Html.LabelFor(model => model.city)</td>
+        <td>@Html.DisplayFor(x => x.city) </td>
+    </tr>
+    <tr>
+        @* Province *@
+        <td>@Html.LabelFor(model => model.province)</td>
+        <td>@Html.DisplayFor(x => x.province) </td>
+    </tr>
+
+   
+</table>
+
+
+<a href='@Url.Action("ListPatient", "UserAdmin")' class="buttonstyle">
+    Back to list
+</a>
+
+

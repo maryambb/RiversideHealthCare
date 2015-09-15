@@ -1,0 +1,53 @@
+﻿@model IEnumerable<RiversideHealthCare.Models.JobPost>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+    
+}
+
+@* Here is the list of all job posts *@
+
+<div>
+    <div style="float:left">
+        <h2>All Job Posts</h2>
+    </div>
+
+    <div style="float:right; padding-top:40px; padding-right:30px;">
+        <a href='@Url.Action("JobPostInsert", "JobPostAdmin")' class="buttonstyle">New Job Post</a>
+    </div>
+    <div style="clear:both"></div>
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Job category</th>
+            <th>Date of posting</th>
+            <th>Status</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td>@x.title</td>
+                <td>@x.JobCategory.name</td>
+                <td>@x.date.ToString("d")</td>
+                <td>@x.status</td>
+                <td>
+                    @Html.ActionLink("View", "JobPostDetails", new { id = x.id })/
+                    @Html.ActionLink("Edit", "JobPostUpdate", new { id = x.id }) /
+                    @Html.ActionLink("Delete", "JobPostDelete", new { id = x.id })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

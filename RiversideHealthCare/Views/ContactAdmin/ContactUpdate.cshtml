@@ -1,0 +1,68 @@
+﻿@model RiversideHealthCare.Models.contact_list
+
+@{
+    ViewBag.Title = "ContactUpdate";
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+}
+
+<h2>ContactUpdate</h2>
+
+@using (Html.BeginForm())
+{
+    //Show the Validation summay
+    @Html.ValidationSummary(true)
+
+
+    @Html.HiddenFor(model => model.Id)
+    <div class="editor-label">
+        @Html.LabelFor(model => model.department)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.department)
+        @Html.ValidationMessageFor(model => model.department, "*")
+    </div>
+    <div class="editor-label">
+        @Html.LabelFor(model => model.detail)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.detail)
+        @Html.ValidationMessageFor(model => model.detail, "*")
+    </div>
+    <div class="editor-label">
+        @Html.LabelFor(model => model.location)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.location)
+        @Html.ValidationMessageFor(model => model.location, "*")
+    </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.phone)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.phone)
+            @Html.ValidationMessageFor(model => model.phone, "*")
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.fax)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.fax)
+            @Html.ValidationMessageFor(model => model.fax, "*")
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.head)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.head)
+            @Html.ValidationMessageFor(model => model.head, "*")
+        </div>
+
+
+    <input type="submit" value="Update" class="buttonstyle" />
+
+    <p>@Html.ActionLink("Back to list", "ContactIndex")</p>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

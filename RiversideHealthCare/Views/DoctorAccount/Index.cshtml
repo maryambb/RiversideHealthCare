@@ -1,0 +1,28 @@
+﻿@model RiversideHealthCare.Models.doctor
+@{
+    ViewBag.Title = "Doctors";
+    @Styles.Render("~/Content/SideBar.css")
+}
+<div id="index-wrap">
+    @*Side menu bar*@
+    <div class="left-menu">
+        <div id="cms-left-nav">
+            <a href='@Url.Action("DoctorProfile", "DoctorAccount")' class="left-mnu-itm">
+                Profile
+            </a>
+            <a href='@Url.Action("UpdateDoctor", "DoctorAccount", new { Model.id })' class="left-mnu-itm">
+                Edit Profile
+            </a>
+            <a href='@Url.Action("Manage", "Account")' class="left-mnu-itm">
+                Change password
+            </a>
+        </div>@* -- end of cms-left-mnu  *@
+    </div>@* -- end of left-nav -- *@
+    <div style="float:left; margin:3px 30px;">
+        <h2>Welcome Dr.@Model.first_name @Model.last_name!</h2>
+        <p>
+            You can see your profile here and you are able to edit it and also change your password.
+        </p>
+    </div>
+    <div style="clear:both"></div>
+</div>

@@ -1,0 +1,43 @@
+﻿@model IEnumerable<RiversideHealthCare.Models.Imageslider>
+
+@{
+    ViewBag.Title = "Imageslider Panel";
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+}
+
+<h1>@ViewBag.Message</h1>
+
+<hr />
+
+@*Button to insert page*@
+<p>@Html.ActionLink("Insert new image", "ImagesliderInsert", "ImagesliderAdmin", new { @class = "buttonstyle" })</p>
+
+@*Table displaying current info list for imageslider*@
+<table>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Image</th>
+            <th>Comment</th>
+            <th>Link</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in Model)
+        {
+            <tr id="filter_col1" data-column="0">
+                @*Directs user to further details on an image*@
+                <td>@Html.ActionLink(x.Name, "ImagesliderDetails", new { ImageId = x.ImageId })</td>
+                <td><img style="width:320px;" src="~/Content/images/imageslider/@Url.Content(x.Image)" alt="IMAGES" /></td>
+                <td>@x.Comment</td>
+                <td>@x.Link</td>
+                @*Directs user to update an image*@
+                <td>@Html.ActionLink("Update", "ImagesliderUpdate", new { ImageId = x.ImageId })/
+                @*Directs user to delete page and confirm*@
+                @Html.ActionLink("Delete", "ImagesliderDelete", new { ImageId = x.ImageId })</td>
+            </tr>
+        }
+    </tbody>
+</table>

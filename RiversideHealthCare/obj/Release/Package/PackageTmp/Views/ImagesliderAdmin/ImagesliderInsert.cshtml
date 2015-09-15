@@ -1,0 +1,52 @@
+﻿@model RiversideHealthCare.Models.Imageslider
+
+@{
+    ViewBag.Title = "Insert Image :: Riverside Health Care";
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+}
+
+<h2>Insert new image</h2>
+
+@*File upload*@
+@using (Html.BeginForm("ImagesliderInsert", "ImagesliderAdmin", null, FormMethod.Post,
+                              new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <div class="editor-label">
+        @Html.LabelFor(x => x.Name, new { @class = "label" })
+    </div>
+    <div class="editor-label">
+        @Html.TextBoxFor(x => x.Name, new { @class = "textbox" })
+        @Html.ValidationMessageFor(x => x.Name, "*Required")
+    </div>
+    <div class="editor-label">
+        @Html.LabelFor(model => model.Image, new { @class = "label" })
+        @Html.ValidationMessageFor(x => x.Image, "*Required")
+    </div>
+    <div class="editor-label">
+        <input type="file" name="file" id="ImagePath" />
+    </div>
+    <div class="editor-label">
+        @Html.LabelFor(x => x.Comment, new { @class = "label" })
+    </div>
+    <div class="editor-label">
+        @Html.TextAreaFor(x => x.Comment, new { @class = "textarea" })
+        @Html.ValidationMessageFor(x => x.Comment, "*Required")
+    </div>
+    <div class="editor-label">
+        @Html.LabelFor(x => x.Link, new { @class = "label" })
+    </div>
+    <div class="editor-label">
+        @Html.TextBoxFor(x => x.Link, new { @class = "textbox" })
+        @Html.ValidationMessageFor(x => x.Link, "*Required")
+    </div>
+
+    <input type="submit" value="Insert" class="buttonstyle" />
+    @Html.ActionLink("Back to list", "ImagesliderIndex", "ImagesliderAdmin", new { @class = "buttonstyle" })
+
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

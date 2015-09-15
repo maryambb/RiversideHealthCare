@@ -1,0 +1,39 @@
+﻿@model IEnumerable<RiversideHealthCare.Models.JobApplicant>
+@{
+    ViewBag.Title = "Applicants";
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+<h2>Applicants List</h2>
+
+@* Here is the list of all applicants *@
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Job Post title</th>
+            <th>email</th>
+            <th>Status</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in Model)
+        {
+            <tr>
+                <td>@x.first_name @x.last_name</td>
+                <td>@x.JobPost.title</td>
+                <td>@x.email</td>
+                <td>@x.status</td>
+                <td>
+                    @Html.ActionLink("View", "ApplicantDetails", new { id = x.id })/
+                    @Html.ActionLink("Edit", "ApplicantUpdate", new { id = x.id }) /
+                    @Html.ActionLink("Delete", "ApplicantDelete", new { id = x.id })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+

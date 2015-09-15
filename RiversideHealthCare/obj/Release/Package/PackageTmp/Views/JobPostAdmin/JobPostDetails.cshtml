@@ -1,0 +1,57 @@
+﻿@model RiversideHealthCare.Models.JobPost
+@{
+    ViewBag.Title = "JobPostDetails";
+    Layout = "~/Views/Shared/_LayoutCMS.cshtml";
+    @Scripts.Render("~/Scripts/cms-menu.js");
+}
+@* Here is the detailed information of one job post *@
+<h1>Details of Job Post: "@Html.DisplayFor(x => x.title)" </h1>
+
+<table>
+    <tr>
+        @* Job Post Title *@
+        <td>@Html.LabelFor(model => model.title)</td>
+        <td>@Html.DisplayFor(x => x.title)</td>
+    </tr>
+    <tr>
+        @* Job Category *@
+        <td>@Html.LabelFor(model => model.JobCategory_id)</td>
+        <td>@Html.DisplayFor(x => x.JobCategory.name) </td>
+    </tr>
+    <tr>
+        @* Date of Posting Job *@
+        @*<td>@Html.LabelFor(model => model.date)</td>*@
+        <td><label>Date of posting:</label></td>
+        <td>@Html.DisplayFor(x => x.date) </td>
+    </tr>
+    <tr>
+        @* Email *@
+        @*<td>@Html.LabelFor(model => model.email)</td>*@
+        <td><label>Email address:</label></td>
+        <td>@Html.DisplayFor(x => x.email) </td>
+    </tr>
+
+    <tr>
+        @* Status *@
+        <td>@Html.LabelFor(model => model.status)</td>
+        <td>@Html.DisplayFor(x => x.status) </td>
+    </tr>
+    <tr>
+        @* Description *@
+        <td>@Html.LabelFor(model => model.description)</td>
+        @*<td>@Html.DisplayFor(x => x.description) </td>*@
+        <td>@Html.Raw(Model.description)</td>
+
+    </tr>
+</table>
+
+
+<a href='@Url.Action("JobPostUpdate", "JobPostAdmin", new { id = Model.id })' class="buttonstyle">
+    Edit
+</a>
+<a href='@Url.Action("JobPostDelete", "JobPostAdmin", new { id = Model.id })' class="buttonstyle">
+    Delete
+</a>
+<a href='@Url.Action("Index", "JobPostAdmin")' class="buttonstyle">
+    Back to list
+</a>
